@@ -10,16 +10,21 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { patchUser } from "@/pages/api/auth/user.api";
 
 export default function ModalNickname() {
   const { data: session, update } = useSession();
   const [nick, setNick] = useState<string | null>("");
 
-  async function handleEditSession() {
-    // TODO make a patch request to the endpint to update the user in database
-    // update the session
-    await update({ nickName: nick });
-
+  async function handleEditNick() {
+   
+    if (session) {
+      const response = await patchUser(session.user?.id, { nickName: nick });
+      if (!response.ok) {
+        // update the session
+        await update({ nickName: nick });
+      }
+    }
   }
   return (
     <Dialog open={(session && !session.user.nickName) ?? false}>
@@ -39,7 +44,7 @@ export default function ModalNickname() {
             />
           </div>
           <Button
-            onClick={() => handleEditSession()}
+            onClick={() => handleEditNick()}
             type="submit"
             size="sm"
             className="px-3 bg-white text-black md:bg-black md:text-white text-lg"

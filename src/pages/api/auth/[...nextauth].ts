@@ -44,24 +44,44 @@ export const authOptions = {
       // Añade nickname al objeto de session
       // console.log("SESSION METHOD");
       // console.log("el token de session method: ", token);
+
+      session.user.id = token?.userData?.id as string;
+      session.user.email = token?.userData?.email as string;
       session.user.nickName = token?.userData?.nickName as string;
-      session.user.apiExchangeToken = token?.userData?.apiExchangeToken as string;
+      session.user.apiExchangeToken = token?.userData
+        ?.apiExchangeToken as string;
       // session.user.nickName = token.nickName as string;
       return session;
     },
-    async jwt({ token, user, trigger, session}: { token: any; user?: any; trigger?: string; session?: any }) {
-       console.log("JWT METHOD token", token);
-       console.log("JWT METHOD session", session);
-       if (trigger === "update") {
-         // Note, that `session` can be any arbitrary object, remember to validate it!
-         token.userData = {
-          nickName: session.nickName ? session.nickName : token.userData?.nickName,
-          apiExchangeToken: session.apiExchangeToken ? session.apiExchangeToken : token.userData?.apiExchangeToken
-          //... more properties 
+    async jwt({
+      token,
+      user,
+      trigger,
+      session,
+    }: {
+      token: any;
+      user?: any;
+      trigger?: string;
+      session?: any;
+    }) {
+      console.log("JWT METHOD token", token);
+      console.log("JWT METHOD session", session);
+      if (trigger === "update") {
+        // Note, that `session` can be any arbitrary object, remember to validate it!
+        token.userData = {
+          id: session.id ? session.id : token.userData?.id,
+          email: session.email ? session.email : token.userData?.email,
+          nickName: session.nickName
+            ? session.nickName
+            : token.userData?.nickName,
+          apiExchangeToken: session.apiExchangeToken
+            ? session.apiExchangeToken
+            : token.userData?.apiExchangeToken,
+          //... more properties
         };
-        }
-        
-        // Solo se ejecuta en el primer login
+      }
+
+      // Solo se ejecuta en el primer login
       if (user) {
         // Obtén el nickname del usuario desde la base de datos o el propio objeto `user`
         // const userFromDb = await getUserFromDatabase(user.id);
@@ -69,9 +89,11 @@ export const authOptions = {
         console.log("JWT METHOD on the first login", user);
 
         token.userData = {
+          id: user.id,
+          email: user.email,
           nickName: user.nickName,
-          apiExchangeToken: user.apiExchangeToken
-          //... more properties 
+          apiExchangeToken: user.apiExchangeToken,
+          //... more properties
         };
       }
       return token;
@@ -113,12 +135,16 @@ export const authOptions = {
             if (!createdUser.ok) {
               return false;
             }
+            //GET user info
             createdUserData = await createdUser.json();
             console.log("createdUserData", createdUserData);
 
+            //Cast user info
+            user.id = createdUserData.id;
+            user.email = createdUserData.email;
             user.nickName = createdUserData.nickName;
             user.apiExchangeToken = createdUserData.apiExchangeToken;
-           
+
             // Faking usernickname and apiExchangeToken
             // user.nickName = createdUserData.nickName ? createdUserData.nickName : "elAlex";
             // user.apiExchangeToken = createdUserData.apiExchangeToken ? createdUserData.apiExchangeToken : "123123123";

@@ -10,18 +10,29 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { patchUser } from "@/pages/api/auth/user.api";
 
 export default function ModalApiToken() {
   const { data: session, update } = useSession();
   const [apiExchangeToken, setApiExchangeToken] = useState<string | null>("");
 
-  async function handleEditSession() {
-    // TODO make a patch request to the endpint to update the user in database
-    // update the session
-    await update({ apiExchangeToken: apiExchangeToken });
+  async function handleEditApiToken() {
+    if (session) {
+      const response = await patchUser(session.user?.id, {
+        apiExchangeToken: apiExchangeToken,
+      });
+      if (!response.ok) {
+        // update the session
+        await update({ apiExchangeToken: apiExchangeToken });
+      }
+    }
   }
   return (
-    <Dialog open={!!((session && session.user.nickName) && !session.user.apiExchangeToken)}>
+    <Dialog
+      open={
+        !!(session && session.user.nickName && !session.user.apiExchangeToken)
+      }
+    >
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Link to your favorite exchange</DialogTitle>
@@ -35,7 +46,7 @@ export default function ModalApiToken() {
             />
           </div>
           <Button
-            onClick={() => handleEditSession()}
+            onClick={() => handleEditApiToken()}
             type="submit"
             size="sm"
             className="px-3 bg-white text-black md:bg-black md:text-white text-lg"
@@ -49,7 +60,8 @@ export default function ModalApiToken() {
             <li>1. Login in your Bit2Me account.</li>
             <li>2. Create an ONLY READ API KEY. </li>
             <li>3. Copy and paste here.</li>
-            <li><br/>
+            <li>
+              <br />
               ⚠️ Never share an API key, if you suspect that an API key was
               compromised revoke it immediately.
             </li>
