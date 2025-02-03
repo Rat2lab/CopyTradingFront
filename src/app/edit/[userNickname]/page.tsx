@@ -120,10 +120,10 @@ export default function Home({ params }: { params: { userNickame: string } }) {
             <UploadIcon className="mr-2 h-4 w-4" />
             Upload image
           </Button>
-          <Button variant="secondary">
+          {/* <Button variant="secondary">
             <PlusIcon className="mr-2 h-4 w-4" />
             New section
-          </Button>
+          </Button> */}
           <Button
             className="mt-20 bg-white text-black md:bg-black md:text-white text-lg"
             onClick={() => signOut({ callbackUrl: "/" })}
