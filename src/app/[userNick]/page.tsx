@@ -1,22 +1,22 @@
 "use client";
 
+import LoginButton from "@/components/loginButton";
 import { MyBarChart } from "@/components/MyBarChart";
 import { MyPieChart } from "@/components/MyPieChart";
 import { MyRadarChart } from "@/components/MyRadarChart";
+import { ShareButton } from "@/components/shareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Profile } from "@/interfaces/user.interface";
+import { getProfileByNickname } from "@/pages/api/auth/user.api";
 import {
   MagnifyingGlassIcon,
-  Share1Icon,
-  PlusIcon,
+  PlusIcon
 } from "@radix-ui/react-icons";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/useUser";
-import { act, useEffect, useState } from "react";
-import LoginButton from "@/components/loginButton";
-import { Profile } from "@/interfaces/user.interface";
-import { getProfileByNickname } from "@/pages/api/auth/user.api";
 
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
@@ -76,10 +76,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
             <AvatarFallback>user</AvatarFallback>
           </Avatar>
           <h1 className="text-4xl font-bold">{actualProfile?.nickName}</h1>
-          <Button variant="default">
-            <Share1Icon className="mr-2 h-4 w-4" />
-            Share this profile
-          </Button>
+          <ShareButton text={`https://trade.rats2lab.com/${actualProfile?.nickName}`} />
           <Button variant="outline">
             <MagnifyingGlassIcon className="mr-2 h-4 w-4" />
             <Link href="/explore"> Explore</Link>

@@ -1,18 +1,16 @@
 "use client";
 
-import { useUserContext } from "@/app/hooks/useUser";
-import LoginButton from "@/components/loginButton";
 import { MyBarChart } from "@/components/MyBarChart";
 import { MyPieChart } from "@/components/MyPieChart";
 import { MyRadarChart } from "@/components/MyRadarChart";
+import { ShareButton } from "@/components/shareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
   MagnifyingGlassIcon,
   PlusIcon,
-  UploadIcon,
-  Share1Icon,
+  UploadIcon
 } from "@radix-ui/react-icons";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -85,10 +83,10 @@ export default function Home({ params }: { params: { userNickame: string } }) {
           </h1>
         )}
         <div className="flex flex-col gap-2">
-          <Button variant="default">
-            <Share1Icon className="mr-2 h-4 w-4" />
-            Share this profile
-          </Button>
+          <ShareButton
+            text={`https://trade.rats2lab.com/${session?.user?.nickName}`}
+          />
+
           <Button variant="outline">
             <MagnifyingGlassIcon className="mr-2 h-4 w-4" />
             <Link href="/explore"> Explore</Link>
