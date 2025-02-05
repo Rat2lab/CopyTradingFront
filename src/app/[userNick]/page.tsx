@@ -18,13 +18,11 @@ import LoginButton from "@/components/loginButton";
 import { Profile } from "@/interfaces/user.interface";
 import { getProfileByNickname } from "@/pages/api/auth/user.api";
 
-
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { setActualProfile, actualProfile } = useUserContext();
-  console.log("render home page");
 
   //TODO infinite loop
 
@@ -32,17 +30,21 @@ export default function Home({ params }: { params: { userNick: string } }) {
   useEffect(() => {
     // const checkProfileEditable = () => {
     //   if (session && actualUser) {
-        // show suggestion to go to edit page? 
+    // show suggestion to go to edit page?
     // };
 
-    console.log("actualuser", actualProfile);
-
     if (!actualProfile && params.userNick) {
-      getProfileByNickname(params.userNick).then((profile: Profile) => {
-        setActualProfile(profile);
-        setLoading(false);
-        // checkProfileEditable();
-      });
+      getProfileByNickname(params.userNick)
+        .then((profile: Profile) => {
+          setActualProfile(profile);
+          setLoading(false);
+          // checkProfileEditable();
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.error("Error loading profile", error);
+          setError(error);
+        });
     }
   }, []);
 

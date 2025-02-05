@@ -33,9 +33,6 @@ export const getProfileByNickname = async (nickName: string) => {
   } catch (error) {
     // Faking user
     console.error(error);
-    return {
-      id: "123456",
-      nickName: nickName,
-    };
+    throw new Error("Failed to fetch user Info");
   }
 };
