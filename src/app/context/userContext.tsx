@@ -1,28 +1,28 @@
 "use client";
-import { User, UserContextType } from "@/interfaces/user.interface";
+import { Profile, User, UserContextType } from "@/interfaces/user.interface";
 import { createContext, useState } from "react";
 export const UserContext = createContext<UserContextType | null>(null);
 
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentProfile, setCurrentProfile] = useState<Profile | null>(null);
   const [loggedUser, setLoggedUser] = useState<User | null>(null);
 
   const setUserLogged = (user: User) => {
     setLoggedUser(user);
   };
 
-  const setActualUser = (user: User) => {
-    setCurrentUser(user);
+  const setActualProfile = (profile: Profile) => {
+    setCurrentProfile(profile);
   };
 
   return (
     <UserContext.Provider
       value={{
-        actualUser: currentUser,
+        actualProfile: currentProfile,
         loggedUser: null,
-        setActualUser,
+        setActualProfile,
         setUserLogged,
       }}
     >

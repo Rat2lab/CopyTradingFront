@@ -8,10 +8,14 @@ export interface User {
     updatedAt: Date | undefined;
   };
 }
+export interface Profile {
+  id: string;
+  nickName: string | null;
+}
 
 export type UserContextType = {
   loggedUser: User | null;
-  actualUser: User | null;
+  actualProfile: Profile | null;
   setUserLogged: (newUser: User) => void;
-  setActualUser: (newUser: User) => void;
+  setActualProfile: (newUser: Profile) => void;
 };

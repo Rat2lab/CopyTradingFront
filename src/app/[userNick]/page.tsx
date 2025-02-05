@@ -13,15 +13,17 @@ import {
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useUserContext } from "../hooks/useUser";
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import LoginButton from "@/components/loginButton";
+import { Profile } from "@/interfaces/user.interface";
+import { getProfileByNickname } from "@/pages/api/auth/user.api";
+
 
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { setActualUser, actualUser } = useUserContext();
-  const [profileEditable, setProfileEditable] = useState<boolean>(false);
+  const { setActualProfile, actualProfile } = useUserContext();
   console.log("render home page");
 
   //TODO infinite loop
@@ -30,49 +32,18 @@ export default function Home({ params }: { params: { userNick: string } }) {
   useEffect(() => {
     // const checkProfileEditable = () => {
     //   if (session && actualUser) {
-    //     const isEditable = actualUser?.email === session?.user?.email;
-
-    //     // Solo actualizamos si es necesario
-    //     if (profileEditable !== isEditable) {
-    //       console.log("cambiamos el estado a " + isEditable);
-    //       setProfileEditable(isEditable);
-    //     }
-    //   }
+        // show suggestion to go to edit page? 
     // };
 
-    // const fetchUserInfo = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       `${process.env.NEXT_PUBLIC_BASE_URL}/v1/user/${params.userNick}`
-    //     );
-    //     if (!response.ok) {
-    //       throw new Error("Failed to fetch user Info");
-    //     }
-    //     const data = await response.json();
-    //     setActualUser(data.data);
-    //   } catch (error) {
-    //     // Faking user
-    //     setActualUser({
-    //       id: "123456",
-    //       nickName: "User",
-    //       email: "nXKwv@example.com",
-    //       timestampable: {
-    //         createdAt: new Date(),
-    //         updatedAt: new Date(),
-    //       },
-    //     });
-    //     //setError("" + error);
-    //     console.error(error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
+    console.log("actualuser", actualProfile);
 
-    // if (!actualUser && params.userNick) {
-    //   fetchUserInfo().then(() => {
-    //     checkProfileEditable();
-    //   });
-    // }
+    if (!actualProfile && params.userNick) {
+      getProfileByNickname(params.userNick).then((profile: Profile) => {
+        setActualProfile(profile);
+        setLoading(false);
+        // checkProfileEditable();
+      });
+    }
   }, []);
 
   if (loading) {
@@ -98,11 +69,11 @@ export default function Home({ params }: { params: { userNick: string } }) {
           <Avatar className="w-44 h-44">
             <AvatarImage
               src="https://github.com/shadcn.png"
-              alt={params.userNick}
+              alt={"" + actualProfile?.nickName}
             />
             <AvatarFallback>user</AvatarFallback>
           </Avatar>
-          <h1 className="text-4xl font-bold">{params.userNick}</h1>
+          <h1 className="text-4xl font-bold">{actualProfile?.nickName}</h1>
           <Button variant="default">
             <Share1Icon className="mr-2 h-4 w-4" />
             Share this profile
@@ -117,12 +88,6 @@ export default function Home({ params }: { params: { userNick: string } }) {
           <MyBarChart />
           <MyPieChart />
           <MyRadarChart />
-          {profileEditable && (
-            <Button variant="default">
-              <PlusIcon className="mr-2 h-4 w-4" />
-              Add charts
-            </Button>
-          )}
         </div>
       </main>
       {status != "authenticated" && (

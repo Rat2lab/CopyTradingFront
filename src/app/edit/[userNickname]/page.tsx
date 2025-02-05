@@ -23,7 +23,6 @@ export default function Home({ params }: { params: { userNickame: string } }) {
   const [loading, setLoading] = useState<boolean>(true);
   const [mobileMode, setMobileMode] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const { setActualUser, actualUser } = useUserContext();
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -36,7 +35,7 @@ export default function Home({ params }: { params: { userNickame: string } }) {
           return;
         }
         const data = await response.json();
-        setActualUser(data);
+        // setActualProfile(data);
         setLoading(false);
       } catch (error) {
         setError("Error loading profile");
