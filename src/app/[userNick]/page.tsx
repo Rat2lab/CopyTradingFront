@@ -1,18 +1,13 @@
 "use client";
 
 import LoginButton from "@/components/loginButton";
-import { MyBarChart } from "@/components/MyBarChart";
-import { MyPieChart } from "@/components/MyPieChart";
-import { MyRadarChart } from "@/components/MyRadarChart";
+import { ProfileView } from "@/components/profileView";
 import { ShareButton } from "@/components/shareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Profile } from "@/interfaces/user.interface";
 import { getProfileByNickname } from "@/pages/api/auth/user.api";
-import {
-  MagnifyingGlassIcon,
-  PlusIcon
-} from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -65,39 +60,34 @@ export default function Home({ params }: { params: { userNick: string } }) {
   }
 
   return (
-    <div className="max-h-screen grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
-      <main className="w-full h-full overflow-auto flex gap-8 row-start-2 justify-between">
-        <div className="flex flex-col gap-6 items-center">
-          <Avatar className="w-44 h-44">
-            <AvatarImage
-              src="https://github.com/shadcn.png"
-              alt={"" + actualProfile?.nickName}
-            />
-            <AvatarFallback>user</AvatarFallback>
-          </Avatar>
-          <h1 className="text-4xl font-bold">{actualProfile?.nickName}</h1>
-          <ShareButton text={`https://trade.rats2lab.com/${actualProfile?.nickName}`} />
-          <Button variant="outline">
-            <MagnifyingGlassIcon className="mr-2 h-4 w-4" />
-            <Link href="/explore"> Explore</Link>
-          </Button>
-        </div>
-        <div className="w-full flex flex-col gap-6 items-center">
-          <h2 className="text-3xl">My basic statistics</h2>
-          <MyBarChart />
-          <MyPieChart />
-          <MyRadarChart />
-        </div>
-      </main>
-      {status != "authenticated" && (
-        <footer className="w-full row-start-3 flex gap-6 flex-wrap items-center justify-start">
-          <Button variant="default">
-            <PlusIcon className="mr-2 h-4 w-4" />
-            Create your portfolio
-          </Button>
-          <LoginButton></LoginButton>
-        </footer>
-      )}
+    <div className="max-h-screen grid grid-cols-12 grid-rows-[20px_1fr_20px] items-start justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex flex-col gap-6 items-center col-span-3 col-start-2">
+        <Avatar className="w-44 h-44">
+          <AvatarImage
+            src="https://github.com/shadcn.png"
+            alt={"" + actualProfile?.nickName}
+          />
+          <AvatarFallback>user</AvatarFallback>
+        </Avatar>
+        <h1 className="text-4xl font-bold">{actualProfile?.nickName}</h1>
+        <ShareButton
+          text={`https://trade.rats2lab.com/${actualProfile?.nickName}`}
+        />
+        <Button variant="outline">
+          <MagnifyingGlassIcon className="mr-2 h-4 w-4" />
+          <Link href="/explore"> Explore</Link>
+        </Button>
+        {status != "authenticated" && (
+          <footer className="w-full row-start-3 flex gap-6 flex-wrap items-center justify-start">
+            <Button variant="default">
+              <PlusIcon className="mr-2 h-4 w-4" />
+              Create your portfolio
+            </Button>
+            <LoginButton></LoginButton>
+          </footer>
+        )}
+      </div>
+      <ProfileView mobileMode={false} />
     </div>
   );
 }
