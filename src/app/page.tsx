@@ -84,7 +84,7 @@ const landing = () => {
             <span className="underline">share what you really want</span>
           </h3>
         </div>
-        <LoginButton />
+        <LoginButton textLogin="Create your portfolio"/>
         <span className="text-center">
           By login, you agree to our
           <Link href="/terms"> Terms of Service and Privacy Policy.</Link>

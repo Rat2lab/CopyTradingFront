@@ -1,11 +1,11 @@
 "use client";
 
-import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { HomeIcon } from "@radix-ui/react-icons";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function LoginButton() {
+export default function LoginButton({ textLogin }: { textLogin: string }) {
   const { data: session } = useSession();
 
   if (session) {
@@ -28,10 +28,10 @@ export default function LoginButton() {
         className="bg-white text-black md:bg-black md:text-white text-lg"
         onClick={() => signIn("google", { callbackUrl: "/onboarding" })}
       >
-        <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-        Login
+        <HomeIcon className="mr-2 h-4 w-4" />
+        {textLogin}
       </Button>
-      <span className="md:text-black">With Google</span>
+      <span className="md:text-black">Login with Google</span>
     </div>
   );
 }

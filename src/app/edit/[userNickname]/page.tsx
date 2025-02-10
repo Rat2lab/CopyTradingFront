@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfileView } from "@/components/profileView";
+import { ProfileView } from "@/components/ProfileView";
 import { SideBar } from "@/components/SideBar";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";

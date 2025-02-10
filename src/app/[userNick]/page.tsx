@@ -1,7 +1,7 @@
 "use client";
 
 import LoginButton from "@/components/loginButton";
-import { ProfileView } from "@/components/profileView";
+import { ProfileView } from "@/components/ProfileView";
 import { SideBar } from "@/components/SideBar";
 import { Button } from "@/components/ui/button";
 import { Profile } from "@/interfaces/user.interface";
@@ -10,6 +10,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/useUser";
+import Link from "next/link";
 
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
@@ -61,14 +62,16 @@ export default function Home({ params }: { params: { userNick: string } }) {
     <div className="max-h-screen grid grid-cols-12 items-start justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
       <div className="flex flex-col min-w-full gap-6 items-center col-span-3 col-start-2 justify-start pt-20 h-full">
         <SideBar mobileMode={false} nickName={params.userNick} />
-        {status != "authenticated" && (
-          <footer className="w-full row-start-3 flex gap-6 flex-wrap items-center justify-start">
+        {status != "authenticated" ? (
+          <div className="w-full row-start-3 flex gap-6 flex-wrap items-center justify-center">
+            <LoginButton textLogin="Create your portfolio"></LoginButton>
+          </div>
+        ) : (
+          <div>
             <Button variant="default">
-              <PlusIcon className="mr-2 h-4 w-4" />
-              Create your portfolio
+              <Link href="/onboarding">Complete your profile</Link>
             </Button>
-            <LoginButton></LoginButton>
-          </footer>
+          </div>
         )}
       </div>
       <ProfileView mobileMode={false} />
