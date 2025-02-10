@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/useUser";
+import { NotFound } from "@/components/NotFound";
 
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
@@ -47,11 +48,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
   }
 
   if (error) {
-    return (
-      <div className="h-full w-full flex justify-center content-center">
-        {"Error loading profile"}
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (
