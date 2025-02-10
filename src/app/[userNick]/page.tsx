@@ -1,16 +1,16 @@
 "use client";
 
+import { Loading } from "@/components/Loading";
 import LoginButton from "@/components/loginButton";
 import { ProfileView } from "@/components/ProfileView";
 import { SideBar } from "@/components/SideBar";
 import { Button } from "@/components/ui/button";
 import { Profile } from "@/interfaces/user.interface";
 import { getProfileByNickname } from "@/pages/api/auth/user.api";
-import { PlusIcon } from "@radix-ui/react-icons";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/useUser";
-import Link from "next/link";
 
 export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
@@ -43,11 +43,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
   }, []);
 
   if (loading) {
-    return (
-      <div className="h-full w-full flex justify-center content-center">
-        {"cargando"}
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {

@@ -1,5 +1,6 @@
 "use client";
 
+import { Loading } from "@/components/Loading";
 import { ProfileView } from "@/components/ProfileView";
 import { SideBar } from "@/components/SideBar";
 import { Button } from "@/components/ui/button";
@@ -20,11 +21,7 @@ export default function Home({ params }: { params: { userNickname: string } }) {
   }, [session]);
 
   if (loading) {
-    return (
-      <div className="h-full w-full flex justify-center content-center">
-        {"Loading your page"}
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
