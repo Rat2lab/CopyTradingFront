@@ -1,3 +1,5 @@
+import { isDynamicMetadataRoute } from "next/dist/build/analysis/get-page-static-info";
+
 export interface Timestamp {
   createdAt: Date;
   updatedAt: Date;
@@ -35,6 +37,7 @@ export interface Widget {
   environments: WidgetEnvironment[];
   profileId: string;
   position: number;
+  data: {[Key in WidgetTypeType]: any};
   timestamp: Timestamp;
 }
 export interface WidgetType {
