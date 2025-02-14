@@ -37,7 +37,7 @@ export function ProfileView({
         >
           {/* {profile?.widgets?.map((widget) => { */}
           {fakeWidgets.map((widget) => {
-            return <ProfileWidget widget={widget} />;
+            return <ProfileWidget widget={widget} key={widget.id} />;
           })}
         </div>
       </div>
