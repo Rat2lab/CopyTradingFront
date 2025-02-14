@@ -1,3 +1,9 @@
+export interface Timestamp {
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date | null;
+}
+
 export interface User {
   id: string;
   nickName: string | null;
@@ -10,12 +16,54 @@ export interface User {
 }
 export interface Profile {
   id: string;
-  nickName: string | null;
+  userId: string;
+  path: string;
+  timestamp: Timestamp;
+  widgets: Widget[];
 }
 
 export type UserContextType = {
-  loggedUser: User | null;
-  actualProfile: Profile | null;
+  loggedUser?: User;
+  actualProfile?: Profile;
   setUserLogged: (newUser: User) => void;
   setActualProfile: (newUser: Profile) => void;
 };
+
+export interface Widget {
+  id: string;
+  type: WidgetType;
+  environments: WidgetEnvironment[];
+  profileId: string;
+  position: number;
+  timestamp: Timestamp;
+}
+export interface WidgetType {
+  id: string;
+  type: WidgetTypeType;
+  defaultData: any;
+  timestamp: Timestamp;
+}
+export interface WidgetEnvironment {
+  id: string;
+  widgetId: string;
+  type: WidgetEnvironmentType;
+  size: any;
+  timestamp: Timestamp;
+}
+
+export enum WidgetEnvironmentType {
+  MOBILE = "mobile",
+  DESKTOP = "desktop",
+}
+
+export enum WidgetTypeType {
+  TEXT = "text",
+  LINK = "link",
+  BAR_CHART = "bar_chart",
+  LINE_CHART = "line_chart",
+  PIE_CHART = "pie_chart",
+  RADAR_CHART = "radar_chart",
+  IMAGE = "image",
+  VIDEO = "video",
+  GIF = "gif",
+}

@@ -17,7 +17,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { setActualProfile, actualProfile } = useUserContext();
+  const {setActualProfile, actualProfile} = useUserContext();
 
   //TODO infinite loop
 
@@ -67,7 +67,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
           </div>
         )}
       </div>
-      <ProfileView mobileMode={false} />
+      <ProfileView mobileMode={false} profile={actualProfile} />
     </div>
   );
 }

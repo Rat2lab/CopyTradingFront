@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { PlusIcon, UploadIcon } from "@radix-ui/react-icons";
 import { signOut, useSession } from "next-auth/react";
+import { join } from "path";
 import { useEffect, useState } from "react";
 
 export default function Home({ params }: { params: { userNickname: string } }) {
@@ -78,7 +79,7 @@ export default function Home({ params }: { params: { userNickname: string } }) {
         </div>
       </div>
 
-      <ProfileView mobileMode={mobileMode} />
+      <ProfileView mobileMode={mobileMode}/>
     </div>
   );
 }
