@@ -29,7 +29,7 @@ export const getProfileByNickname = async (nickName: string) => {
       throw new Error("Failed to fetch user Info");
     }
     const data = await response.json();
-    return data.data;
+    return data;
   } catch (error) {
     // Faking user
     console.error(error);

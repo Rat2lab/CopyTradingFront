@@ -37,7 +37,7 @@ export interface Widget {
   environments: WidgetEnvironment[];
   profileId: string;
   position: number;
-  data: {[Key in WidgetTypeType]: any};
+  data: WidgetData;
   timestamp: Timestamp;
 }
 export interface WidgetType {
@@ -52,6 +52,20 @@ export interface WidgetEnvironment {
   type: WidgetEnvironmentType;
   size: any;
   timestamp: Timestamp;
+}
+
+
+export interface WidgetData {
+  [WidgetTypeType.TEXT]: string;
+  [WidgetTypeType.IMAGE]: WidgetTypeImage;
+  // [WidgetTypeType.BAR_CHART]: Widget...;
+  // [WidgetTypeType.GIF]: WidgetGifData;
+}
+
+
+export interface WidgetTypeImage {
+  alt: string;
+  url: string;
 }
 
 export enum WidgetEnvironmentType {

@@ -1,4 +1,5 @@
 import {
+  WidgetData,
   WidgetType,
   WidgetTypeType
 } from "@/interfaces/user.interface";
@@ -6,7 +7,7 @@ import { MyBarChart } from "./MyBarChart";
 import { MyPieChart } from "./MyPieChart";
 import { MyRadarChart } from "./MyRadarChart";
 
-export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType, data: {[Key in WidgetTypeType]: any} }) {
+export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType, data: WidgetData }) {
   switch (widgetType.type) {
     case WidgetTypeType.TEXT:
       return (
@@ -18,7 +19,7 @@ export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType
       return (
         <div className="h-full min-h-12 w-full flex flex-col items-center col-span-2 bg-green-600">
           <img
-            src={data.image.url}
+            src={data.image.url} alt={data.image.alt}
           />
         </div>
       );

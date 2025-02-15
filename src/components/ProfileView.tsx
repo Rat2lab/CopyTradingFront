@@ -1,4 +1,4 @@
-import { Profile, Widget, WidgetType } from "@/interfaces/user.interface";
+import { Profile } from "@/interfaces/user.interface";
 import { useSession } from "next-auth/react";
 import { ProfileWidget } from "./ProfileWidget";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -11,7 +11,6 @@ export function ProfileView({
   profile?: Profile;
 }) {
   const { data: session, status } = useSession();
-  const fakeWidgets: Widget[] = [];
 
   return (
     <main
@@ -33,10 +32,9 @@ export function ProfileView({
       <div className={`w-full flex flex-col gap-6 items-center `}>
         <h2 className="text-3xl">My profile</h2>
         <div
-          className={`w-full grid grid-cols-${fakeWidgets.length} gap-6 items-center `}
+          className={`w-full grid grid-cols-${profile?.widgets.length} gap-6 items-center `}
         >
-          {/* {profile?.widgets?.map((widget) => { */}
-          {fakeWidgets.map((widget) => {
+          {profile?.widgets.map((widget) => {
             return <ProfileWidget widget={widget} key={widget.id} />;
           })}
         </div>
