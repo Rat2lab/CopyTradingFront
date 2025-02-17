@@ -28,67 +28,85 @@ const RadarFakeData = [
 
 const landing = () => {
   return (
-    <main className="w-full h-screen flex flex-col gap-0 md:gap-8 md:flex-row md:justify-between columns-2 overflow-hidden text-white bg-gradient-to-b from-gradient-start  via-gradient-middle to-gradient-end">
-      <div className="flex flex-col w-full items-center gap-8 p-8 md:p-16 ">
-        <h1 className="text-4xl md:text-6xl font-bold">CryptoFolio.me</h1>
-        <h2 className="text-2xl md:text-4xl text-center">
-          A door to trusted data 🚪🔒📊
-        </h2>
-        <div className="grid-cols-6 mt-6 w-full hidden md:grid">
-          <ul className="text-2xl withespace-pre-wrap font-bold flex flex-col gap-6 col-span-4 ml-8">
-            <li className="flex items-center">
-              <ShuffleIcon className="mr-2 h-10 w-10 bg-white rounded-full text-black p-1 ml-2" />
-              Connect your exchange.
-            </li>
-            <li className="flex items-center">
-              <GearIcon className="mr-2 h-10 w-10 bg-white rounded-full text-black p-1 ml-2" />
-              Set up your portfolio.
-            </li>
-            <li className="flex items-center">
-              <Share2Icon className="mr-2 h-10 w-10 bg-white rounded-full text-black p-1 ml-2" />
-              Share what you want.
-            </li>
-          </ul>
-        </div>
-        <div className="hidden md:grid grid-cols-7 gap-12">
-          <div className="bg-white rounded-2xl pt-2 col-span-3 ">
+    <main className="w-full h-screen flex flex-col gap-0 md:gap-8 md:justify-between columns-2 ">
+      <div className="w-full flex flex-col items-center gap-10 justify-center md:bg-white md:text-black">
+        <img
+          src="/favicon1024x1024.ico"
+          alt="CryptoFolio.me"
+          className="h-32"
+        />
+        <div className="flex items-center p-8 gap-10">
+          <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-600 -rotate-6">
             <MyPieChart />
           </div>
-          <div className="bg-white rounded-2xl pt-2 col-span-3 col-end-8">
+          <div className="flex flex-col gap-8 items-center">
+            <h1 className="text-4xl md:text-6xl font-bold">CryptoFolio.me</h1>
+
+            <h3 className="text-xl md:text-2xl md:font-bold text-left md:text-center">
+              create your personalized page to{" "}
+              <span className="underline">share what you really want</span>
+            </h3>
+            <LoginButton textLogin="Create your portfolio" />
+            <span className="text-center">
+              By login, you agree to our
+              <Link href="/terms"> Terms of Service and Privacy Policy.</Link>
+            </span>
+          </div>
+
+          <div className="bg-white rounded-2xl pt-2 col-span-3 col-end-8 border-2 border-green-600 rotate-6">
             <MyRadarChart data={RadarFakeData} />
           </div>
-          <div className="bg-white rounded-2xl col-span-7">
-            <MyBarChart />
-          </div>
-        </div>
-        <div className="grid grid-cols-7 md:hidden">
-          <div className="bg-white rounded-2xl col-span-7">
-            <Image
-              src={`/chart.jpg`}
-              priority
-              alt={"alt"}
-              width="300"
-              height="200"
-              className="rounded-2xl"
-            />
-          </div>
+          {/* <div className="bg-white rounded-2xl col-span-7 border-2 border-green-600">
+  <MyBarChart />
+</div> */}
         </div>
       </div>
-      <div className="w-full flex flex-col items-center gap-10 p-8 justify-center md:bg-white md:text-black">
-        <div>
-          <h2 className="text-2xl md:text-4xl font-bold text-justify md:text-center">
-            Get your unique link and show everyone your crypto portfolio
-          </h2>
-          <h3 className="text-xl md:text-2xl md:font-bold text-left md:text-center">
-            create your personalized page to{" "}
-            <span className="underline">share what you really want</span>
-          </h3>
+
+      <div
+        id="link_section"
+        className="flex items-center justify-around w-full h-full  p-16 gap-10"
+      >
+        <h1 className="text-4xl max-w-72">
+          Get your unique link and show everyone your crypto portfolio
+        </h1>
+        <div className="bg-gray-200 min-h-96 flex items-center justify-center p-8">
+          <h2 className="font-bold text-2xl">cryptoFolio.me/</h2>
+          <h2 className="text-2xl">alex</h2>
         </div>
-        <LoginButton textLogin="Create your portfolio"/>
-        <span className="text-center">
-          By login, you agree to our
-          <Link href="/terms"> Terms of Service and Privacy Policy.</Link>
-        </span>
+      </div>
+      <div id="exchanges_section" className="flex items-center justify-around">
+        <div>
+          <img src="/bit2me.jpeg" alt="bit2me" className="h-32" />
+          <img src="/binance.jpg" alt="binance" className="h-32" />
+          <img src="/kraken.webp" alt="kraken" className="h-32" />
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <h1 className="text-4xl text-green-800">A door to trusted data </h1>
+          <h1 className="text-4xl text-green-800">🚪🔒📊</h1>
+          <h3 className="text-2xl">Connect your favorite exchanges</h3>
+        </div>
+      </div>
+      <div
+        id="configure_section"
+        className="flex items-center justify-around w-full h-full p-16 gap-10"
+      >
+        <h1 className="text-4xl max-w-72">
+          Set up your portfolio and show what you really want
+        </h1>
+        <img
+          src="/portfolio-sample.png"
+          alt="chart"
+          className="h-132 border-2 border-green-600 rounded-2xl"
+        />
+      </div>
+
+      <div id="xplore_section"></div>
+      <div
+        id="footer"
+        className="flex flex-col items-center justify-center w-full p-16 gap-10 text-white bg-gradient-to-b from-gradient-start  via-gradient-middle to-gradient-end"
+      >
+        <LoginButton textLogin="Create your portfolio" />
+        <span className="text-center">Build with ❤ by Rats2Lab</span>
       </div>
     </main>
   );
