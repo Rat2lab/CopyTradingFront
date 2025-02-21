@@ -1,12 +1,9 @@
-import React from "react";
 import Link from "next/link";
 
-import { MyBarChart } from "@/components/MyBarChart";
-import { MyRadarChart } from "@/components/MyRadarChart";
-import { MyPieChart } from "@/components/MyPieChart";
-import { GearIcon, Share2Icon, ShuffleIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
 import LoginButton from "@/components/loginButton";
+import { MyPieChart } from "@/components/MyPieChart";
+import { MyRadarChart } from "@/components/MyRadarChart";
+import "./globals.css";
 
 const RadarFakeData = [
   {
@@ -29,24 +26,24 @@ const RadarFakeData = [
 const landing = () => {
   return (
     <main className="w-full h-screen flex flex-col gap-0 md:gap-8 md:justify-between columns-2 ">
-      <div className="w-full flex flex-col items-center gap-10 justify-center md:bg-white md:text-black">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center md:bg-white md:text-black">
         <img
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
-          className="h-32"
+          className="h-20 md:h-32 mt-4"
         />
-        <div className="flex items-center p-8 gap-10">
-          <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-600 -rotate-6">
+        <div className="flex flex-col md:flex-row items-center p-8 gap-10">
+          <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-600 -rotate-6 hidden md:block">
             <MyPieChart />
           </div>
           <div className="flex flex-col gap-8 items-center">
             <h1 className="text-4xl md:text-6xl font-bold">CryptoFolio.me</h1>
 
-            <h3 className="text-xl md:text-2xl md:font-bold text-left md:text-center">
+            <h3 className="text-xl md:text-2xl md:font-bold text-center">
               create your personalized page to{" "}
               <span className="underline">share what you really want</span>
             </h3>
-            <LoginButton textLogin="Create your portfolio" />
+            <LoginButton textLogin="Sign up with Google" />
             <span className="text-center">
               By login, you agree to our
               <Link href="/terms"> Terms of Service and Privacy Policy.</Link>
@@ -64,23 +61,33 @@ const landing = () => {
 
       <div
         id="link_section"
-        className="flex items-center justify-around w-full h-full  p-16 gap-10"
+        className="flex flex-col md:flex-row items-center justify-around w-full h-full p-8 md:p-16 gap-10"
       >
-        <h1 className="text-4xl max-w-72">
+        <h1 className="text-4xl max-w-72 text-center md:text-left">
           Get your unique link and show everyone your crypto portfolio
         </h1>
         <div className="bg-gray-200 min-h-96 flex items-center justify-center p-8">
-          <h2 className="font-bold text-2xl">cryptoFolio.me/</h2>
-          <h2 className="text-2xl">alex</h2>
+          <h2 className="font-bold text-2xl">cryptofolio.me/</h2>
+          <div className="username-animation">
+            <span className="username">esther</span>
+            <span className="username">alex</span>
+            <span className="username">carmy</span>
+            <span className="username">edu</span>
+            <span className="username">luz</span>
+            {/* Add more usernames as needed */}
+          </div>
         </div>
       </div>
-      <div id="exchanges_section" className="flex items-center justify-around">
+      <div
+        id="exchanges_section"
+        className="flex flex-col-reverse md:flex-row items-center justify-around p-8 md:p-16 gap-10"
+      >
         <div>
           <img src="/bit2me.jpeg" alt="bit2me" className="h-32" />
           <img src="/binance.jpg" alt="binance" className="h-32" />
           <img src="/kraken.webp" alt="kraken" className="h-32" />
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-4 text-center">
           <h1 className="text-4xl text-green-800">A door to trusted data </h1>
           <h1 className="text-4xl text-green-800">🚪🔒📊</h1>
           <h3 className="text-2xl">Connect your favorite exchanges</h3>
@@ -88,9 +95,9 @@ const landing = () => {
       </div>
       <div
         id="configure_section"
-        className="flex items-center justify-around w-full h-full p-16 gap-10"
+        className="flex flex-col md:flex-row items-center justify-around w-full h-full p-8 md:p-16 gap-10"
       >
-        <h1 className="text-4xl max-w-72">
+        <h1 className="text-4xl max-w-72 text-center md:text-left">
           Set up your portfolio and show what you really want
         </h1>
         <img

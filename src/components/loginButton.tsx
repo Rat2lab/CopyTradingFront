@@ -14,7 +14,7 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
         <Link href="/onboarding">Complete your profile</Link>
         or <br />
         <Button
-          className="bg-white text-black md:bg-black md:text-white text-lg"
+          className="bg-green-900 text-lg"
           onClick={() => signOut({ callbackUrl: "/" })}
         >
           Logout
@@ -23,15 +23,15 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
     );
   }
   return (
-    <div className="flex flex-col gap-2 items-center">
+    <div className="flex flex-col gap-1 items-center">
       <Button
-        className="bg-white text-black md:bg-black md:text-white text-lg"
+        className="bg-white text-green-900 text-lg gap-1 border-2 border-green-800"
         onClick={() => signIn("google", { callbackUrl: "/onboarding" })}
       >
-        <HomeIcon className="mr-2 h-4 w-4" />
+        <img src="/google.png" className="h-6"></img>
         {textLogin}
       </Button>
-      <span className="md:text-black">Login with Google</span>
+      
     </div>
   );
 }
