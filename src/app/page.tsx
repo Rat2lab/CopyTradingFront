@@ -25,8 +25,8 @@ const RadarFakeData = [
 
 const landing = () => {
   return (
-    <main className="w-full h-screen flex flex-col gap-0 md:gap-8 md:justify-between columns-2 ">
-      <div className="w-full flex flex-col md:flex-row items-center justify-center md:bg-white md:text-black">
+    <main className="w-full ">
+      <div className="w-full flex flex-col items-center justify-center md:bg-white md:text-black">
         <img
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
@@ -66,15 +66,39 @@ const landing = () => {
         <h1 className="text-4xl max-w-72 text-center md:text-left">
           Get your unique link and show everyone your crypto portfolio
         </h1>
-        <div className="bg-gray-200 min-h-96 flex items-center justify-center p-8">
+        <div className="bg-gray-100 min-h-96 flex items-center justify-center p-8">
           <h2 className="font-bold text-2xl">cryptofolio.me/</h2>
-          <div className="username-animation">
-            <span className="username">esther</span>
-            <span className="username">alex</span>
-            <span className="username">carmy</span>
-            <span className="username">edu</span>
-            <span className="username">luz</span>
-            {/* Add more usernames as needed */}
+          <div className="overflow-hidden h-72 relative">
+            <div className="username-animation gap-0">
+              <span className="username">atom</span>
+              <span className="username">h20</span>
+              <span className="username">lizzard</span>
+              <span className="username">oblivion</span>
+              <span className="username">ryuk</span>
+              <span className="username">gerard</span>
+              <span className="username">mike</span>
+              <span className="username">anna</span>
+              <span className="username">david</span>
+              <span className="username">sarah</span>
+              <span className="username">jude</span>
+              <span className="username">alex</span>
+              <span className="username">edu</span>
+              <span className="username">luz</span>
+              <span className="username">jacob</span>
+              <span className="username">maria</span>
+              <span className="username">tom</span>
+              <span className="username">kev</span>
+              <span className="username">liz</span>
+              <span className="username">yuzz</span>
+              <span className="username">olvier</span>
+              <span className="username">smash</span>
+              <span className="username">zzz</span>
+              <span className="username">jess</span>
+
+              {/* Add more usernames as needed */}
+            </div>
+            <div className="fade-out-top"></div>
+            <div className="fade-out-bottom"></div>
           </div>
         </div>
       </div>
@@ -82,12 +106,12 @@ const landing = () => {
         id="exchanges_section"
         className="flex flex-col-reverse md:flex-row items-center justify-around p-8 md:p-16 gap-10"
       >
-        <div>
-          <img src="/bit2me.jpeg" alt="bit2me" className="h-32" />
-          <img src="/binance.jpg" alt="binance" className="h-32" />
-          <img src="/kraken.webp" alt="kraken" className="h-32" />
+        <div className="relative h-80 w-80">
+          <img src="/kraken.webp" alt="kraken" className="h-32 absolute " />
+          <img src="/binance.jpg" alt="binance" className="h-32 absolute top-[30%] left-[15%]" />
+          <img src="/bit2me.jpeg" alt="bit2me" className="h-32 absolute top-[60%] left-[30%]" />
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-4 text-center">
+        <div className="flex flex-col items-center gap-4 text-center">
           <h1 className="text-4xl text-green-800">A door to trusted data </h1>
           <h1 className="text-4xl text-green-800">🚪🔒📊</h1>
           <h3 className="text-2xl">Connect your favorite exchanges</h3>
