@@ -20,7 +20,6 @@ body {
 
   .fade-out-top {
     background-image: linear-gradient(
-      #000,
       theme("colors.gray.100") 0%,
       rgba(252, 252, 252, 0)
     );
