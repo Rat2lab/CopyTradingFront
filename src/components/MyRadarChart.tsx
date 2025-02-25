@@ -53,7 +53,7 @@ export function MyRadarChart({ data, hasRadiusAxis, hasGrid }: {data?: any, hasR
   ];
 
   return (
-    <ChartContainer config={chartConfig} className="min-h-[150px] w-full">
+    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
       <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
         {hasGrid ?? <PolarGrid />}
         <PolarAngleAxis dataKey="subject" />

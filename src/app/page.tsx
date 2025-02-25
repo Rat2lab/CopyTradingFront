@@ -26,14 +26,14 @@ const RadarFakeData = [
 const landing = () => {
   return (
     <main className="w-full ">
-      <div className="w-full flex flex-col items-center justify-center md:bg-white md:text-black">
+      <div className="w-full h-screen flex flex-col items-center justify-center md:bg-white md:text-black">
         <img
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
           className="h-20 md:h-32 mt-4"
         />
-        <div className="flex flex-col md:flex-row items-center p-8 gap-10">
-          <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-600 -rotate-6 hidden md:block">
+        <div className="flex flex-col md:flex-row items-center justify-around w-full p-8 gap-10">
+          <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-800 -rotate-6 hidden md:block">
             <MyPieChart />
           </div>
           <div className="flex flex-col gap-8 items-center">
@@ -50,7 +50,7 @@ const landing = () => {
             </span>
           </div>
 
-          <div className="bg-white rounded-2xl pt-2 col-span-3 col-end-8 border-2 border-green-600 rotate-6">
+          <div className="bg-white rounded-2xl pt-2 col-span-3 col-end-8 border-2 border-green-800 rotate-6">
             <MyRadarChart data={RadarFakeData} />
           </div>
           {/* <div className="bg-white rounded-2xl col-span-7 border-2 border-green-600">
@@ -61,12 +61,12 @@ const landing = () => {
 
       <div
         id="link_section"
-        className="flex flex-col md:flex-row items-center justify-around w-full h-full p-8 md:p-16 gap-10"
+        className="md:h-screen flex flex-col md:flex-row items-center justify-around w-full p-8 md:p-16 gap-10"
       >
-        <h1 className="text-4xl max-w-72 text-center md:text-left">
+        <h1 className="text-4xl md:text-6xl max-w-[40rem] md:w-1/3 text-center md:text-justify">
           Get your unique link and show everyone your crypto portfolio
         </h1>
-        <div className="bg-gray-100 min-h-96 flex items-center justify-center p-8">
+        <div className="bg-gray-100 min-h-96 md:w-1/3 flex items-center justify-center p-8 rounded-2xl border-2 border-green-800">
           <h2 className="font-bold text-2xl">cryptofolio.me/</h2>
           <div className="overflow-hidden h-72 relative">
             <div className="username-animation gap-0">
@@ -104,31 +104,35 @@ const landing = () => {
       </div>
       <div
         id="exchanges_section"
-        className="flex flex-col-reverse md:flex-row items-center justify-around p-8 md:p-16 gap-10"
+        className="md:h-screen flex flex-col-reverse md:flex-row items-center justify-around w-full p-8 md:p-16 gap-10"
       >
-        <div className="relative h-80 w-80">
-          <img src="/kraken.webp" alt="kraken" className="h-32 absolute " />
-          <img src="/binance.jpg" alt="binance" className="h-32 absolute top-[30%] left-[15%]" />
-          <img src="/bit2me.jpeg" alt="bit2me" className="h-32 absolute top-[60%] left-[30%]" />
+        <div className="flex items-center justify-center w-full md:w-1/3">
+          <img src="/exchanges.png" alt="kraken" className="w-full" />
         </div>
         <div className="flex flex-col items-center gap-4 text-center">
-          <h1 className="text-4xl text-green-800">A door to trusted data </h1>
-          <h1 className="text-4xl text-green-800">🚪🔒📊</h1>
-          <h3 className="text-2xl">Connect your favorite exchanges</h3>
+          <h1 className="text-4xl md:text-6xl text-green-800">
+            A door to trusted data{" "}
+          </h1>
+          <h1 className="text-4xl md:text-6xl text-green-800">🚪🔒📊</h1>
+          <h3 className="text-2xl md:text-4xl">
+            Connect your favorite exchanges
+          </h3>
         </div>
       </div>
       <div
         id="configure_section"
-        className="flex flex-col md:flex-row items-center justify-around w-full h-full p-8 md:p-16 gap-10"
+        className="w-full md:h-screen flex flex-col md:flex-row items-center justify-around p-8 md:p-16 gap-10"
       >
-        <h1 className="text-4xl max-w-72 text-center md:text-left">
+        <h1 className="text-4xl max-w-[40rem] md:text-6xl text-center md:text-justify">
           Set up your portfolio and show what you really want
         </h1>
-        <img
-          src="/portfolio-sample.png"
-          alt="chart"
-          className="h-132 border-2 border-green-600 rounded-2xl"
-        />
+        <div className="flex items-center justify-center w-full md:w-1/3">
+          <img
+            src="/portfolio-sample.png"
+            alt="chart"
+            className="h-132 border-2 border-green-800 rounded-2xl"
+          />
+        </div>
       </div>
 
       <div id="xplore_section"></div>
