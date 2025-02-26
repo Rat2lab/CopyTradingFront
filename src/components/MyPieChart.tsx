@@ -60,7 +60,7 @@ export function MyPieChart({ data }: any) {
   };
 
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+    <ChartContainer config={chartConfig} className="min-h-[185px] w-full">
       <PieChart width={200} height={200}>
         <Pie
           data={data}

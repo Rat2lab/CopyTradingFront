@@ -4,6 +4,11 @@ import LoginButton from "@/components/loginButton";
 import { MyPieChart } from "@/components/MyPieChart";
 import { MyRadarChart } from "@/components/MyRadarChart";
 import "./globals.css";
+import {
+  MagnifyingGlassIcon,
+  DoubleArrowDownIcon,
+} from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
 
 const RadarFakeData = [
   {
@@ -26,11 +31,11 @@ const RadarFakeData = [
 const landing = () => {
   return (
     <main className="w-full ">
-      <div className="w-full h-screen flex flex-col items-center justify-center md:bg-white md:text-black">
+      <div className="relative w-full h-screen flex flex-col items-center justify-center md:bg-white md:text-black">
         <img
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
-          className="h-20 md:h-32 mt-4"
+          className="h-20 md:h-32 mt-4 md:mb-12"
         />
         <div className="flex flex-col md:flex-row items-center justify-around w-full p-8 gap-10">
           <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-800 -rotate-6 hidden md:block">
@@ -57,11 +62,14 @@ const landing = () => {
   <MyBarChart />
 </div> */}
         </div>
+        <div className="absolute bottom-2">
+          <DoubleArrowDownIcon className="animate-bounce h-4 w-4" />
+        </div>
       </div>
 
       <div
         id="link_section"
-        className="md:h-screen flex flex-col md:flex-row items-center justify-around w-full p-8 md:p-16 gap-10"
+        className="md:h-screen bg-green-100 flex flex-col md:flex-row items-center justify-around w-full p-8 md:p-16 gap-10"
       >
         <h1 className="text-4xl md:text-6xl max-w-[40rem] md:w-1/3 text-center md:text-justify">
           Get your unique link and show everyone your crypto portfolio
@@ -121,7 +129,7 @@ const landing = () => {
       </div>
       <div
         id="configure_section"
-        className="w-full md:h-screen flex flex-col md:flex-row items-center justify-around p-8 md:p-16 gap-10"
+        className="w-full bg-green-100 md:h-screen flex flex-col md:flex-row items-center justify-around p-8 md:p-16 gap-10"
       >
         <h1 className="text-4xl max-w-[40rem] md:text-6xl text-center md:text-justify">
           Set up your portfolio and show what you really want
@@ -135,7 +143,53 @@ const landing = () => {
         </div>
       </div>
 
-      <div id="xplore_section"></div>
+      <div
+        id="xplore_section"
+        className="flex flex-col items-center justify-center w-full p-16 gap-10"
+      >
+        <h1 className="text-2xl md:text-4xl font-bold">Join our community</h1>
+        <div className="flex items-center gap-2">
+          <Link href={"/ale"}>
+            <img
+              src="https://avatars.githubusercontent.com/u/11692199?v=4"
+              alt={"avatar"}
+              className="w-20 rounded-full"
+            />
+          </Link>{" "}
+          <Link href={"/edu"}>
+            <img
+              src="https://avatars.githubusercontent.com/u/54369857?v=4"
+              alt={"avatar"}
+              className="w-20 rounded-full"
+            />
+          </Link>{" "}
+          <Link href={"/rat2lab"}>
+            <img
+              src="https://avatars.githubusercontent.com/u/190880981?v=4"
+              alt={"avatar"}
+              className="w-20 rounded-full"
+            />
+          </Link>{" "}
+          <Link href={"/kev"}>
+            <img
+              src="https://avatars.githubusercontent.com/u/1"
+              alt={"avatar"}
+              className="w-20 rounded-full"
+            />
+          </Link>{" "}
+          <Link href={"/sarah"}>
+            <img
+              src="https://avatars.githubusercontent.com/u/2"
+              alt={"avatar"}
+              className="w-20 rounded-full"
+            />
+          </Link>
+        </div>
+        <Button variant="outline">
+          <MagnifyingGlassIcon className="mr-2 h-4 w-4" />
+          <Link href={"/explore"}>Explore more portfolios</Link>
+        </Button>
+      </div>
       <div
         id="footer"
         className="flex flex-col items-center justify-center w-full p-16 gap-10 text-white bg-gradient-to-b from-gradient-start  via-gradient-middle to-gradient-end"
