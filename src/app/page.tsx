@@ -3,12 +3,12 @@ import Link from "next/link";
 import LoginButton from "@/components/loginButton";
 import { MyPieChart } from "@/components/MyPieChart";
 import { MyRadarChart } from "@/components/MyRadarChart";
-import "./globals.css";
-import {
-  MagnifyingGlassIcon,
-  DoubleArrowDownIcon,
-} from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import {
+  DoubleArrowDownIcon,
+  MagnifyingGlassIcon,
+} from "@radix-ui/react-icons";
+import "./globals.css";
 
 const RadarFakeData = [
   {

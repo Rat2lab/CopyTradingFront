@@ -100,7 +100,7 @@ export const authOptions = {
     },
 
     async signIn({ account, profile, user }: any) {
-      console.log("SIGNIN METHOD");
+      console.log("SIGNIN METHOD - Account:", account);
 
       if (account.provider === "google") {
         let createdUserData: MyUser = {
