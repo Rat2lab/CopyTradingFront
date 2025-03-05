@@ -32,7 +32,7 @@ export function ProfileView({
       <div className={`w-full flex flex-col gap-6 items-center `}>
         <h2 className="text-3xl">My profile</h2>
         <div
-          className={`w-full grid grid-cols-${profile?.widgets.length} gap-6 items-center `}
+          className={`w-full grid grid-cols-4 gap-6 items-center `}
         >
           {profile?.widgets.map((widget) => {
             return <ProfileWidget widget={widget} key={widget.id} />;

@@ -28,7 +28,7 @@ export type UserContextType = {
   loggedUser?: User;
   actualProfile?: Profile;
   setUserLogged: (newUser: User) => void;
-  setActualProfile: (newUser: Profile) => void;
+  setActualProfile: (newUser: any) => void;
 };
 
 export interface Widget {
