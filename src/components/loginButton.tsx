@@ -8,23 +8,6 @@ import { useEffect } from "react";
 export default function LoginButton({ textLogin }: { textLogin: string }) {
   const { data: session } = useSession();
 
-  useEffect(() => {
-    const receiveMessage = (event: MessageEvent) => {
-      console.log("Mensaje recibido:", event.data);
-      if (event.origin !== "http://localhost:3000") return;
-
-      const { accessToken } = event.data;
-      if (accessToken) {
-        // localStorage.setItem("token", token);
-        console.log("Token recibido:", accessToken);
-      }
-    };
-
-    window.addEventListener("message", receiveMessage);
-    return () => window.removeEventListener("message", receiveMessage);
-  }, []);
-
- 
   const openPopup = () => {
     const width = 500;
     const height = 600;
@@ -32,20 +15,22 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
     const top = window.screen.height / 2 - height / 2;
 
     const authWindow = window.open(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/google`, // URL del backend de NestJS
+      `/auth`,
       "Login",
       `width=${width},height=${height},top=${top},left=${left}`
     );
 
-    const checkPopup = setInterval(() => {
-      if (!authWindow || authWindow.closed) {
-        clearInterval(checkPopup);
-        // Aquí podríamos verificar si el usuario ya tiene un token
-        console.log("Popup cerrado");
+    window.addEventListener("message", (event) => {
+      console.log(event);
+      if (event.origin === process.env.NEXT_PUBLIC_BASE_URL) {
+        const { accessToken } = event.data;
+        if (accessToken) {
+          // Cerrar el modal de manera segura utilizando postMessage
+          // authWindow.postMessage("close", "*");
+        }
       }
-    }, 500);
+    });
   };
-
   if (session) {
     return (
       <div className="flex flex-col gap-2 items-center">
