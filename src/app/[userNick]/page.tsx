@@ -154,6 +154,62 @@ export default function Home({ params }: { params: { userNick: string } }) {
                 },
               },
               {
+                id: "a677ac3e-b4dd-460a-9f48-c9440e4b72cf",
+                type: {
+                  id: "545a3e7b-0f9b-4399-a493-a01106d26bbf",
+                  type: "image",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:36:12.000Z",
+                    updatedAt: "2025-02-14T13:36:12.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: {
+                  image: {
+                    alt: "Alt text",
+                    url: "https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp",
+                  },
+                },
+                environments: [
+                  {
+                    id: "875e420d-385c-4fb6-b920-572cbb3fc796",
+                    widgetId: "a677ac3e-b4dd-460a-9f48-c9440e4b72cf",
+                    type: "desktop",
+                    size: {
+                      row: 3,
+                      column: 1,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:29:58.000Z",
+                      updatedAt: "2025-02-28T09:29:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "627b7117-8f9b-43a2-b660-13662f1c07fa",
+                    widgetId: "a677ac3e-b4dd-460a-9f48-c9440e4b72cf",
+                    type: "mobile",
+                    size: {
+                      row: 3,
+                      column: 3,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:29:59.000Z",
+                      updatedAt: "2025-02-28T09:29:59.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 6,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:53.000Z",
+                  updatedAt: "2025-02-14T13:38:53.000Z",
+                  deletedAt: null,
+                },
+              },
+              {
                 id: "d90f1908-dbc1-4d8a-8554-c89a25f93f48",
                 type: {
                   id: "83b03a2b-a7c1-4b6d-9d5c-1db5efaa9576",
@@ -171,6 +227,112 @@ export default function Home({ params }: { params: { userNick: string } }) {
                 timestamp: {
                   createdAt: "2025-02-14T13:38:53.000Z",
                   updatedAt: "2025-02-14T13:38:53.000Z",
+                  deletedAt: null,
+                },
+              },
+              {
+                id: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                type: {
+                  id: "eab7a0e7-b920-4b3e-b977-c3e0ae5b69c3",
+                  type: "text",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:35:39.000Z",
+                    updatedAt: "2025-02-14T13:35:39.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: {
+                  text: "Texto título x1",
+                },
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac57728",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "desktop",
+                    size: {
+                      row: 1,
+                      column: 1,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f498a2",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 0,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:49.000Z",
+                  updatedAt: "2025-02-14T13:38:49.000Z",
+                  deletedAt: null,
+                },
+              },
+              {
+                id: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                type: {
+                  id: "eab7a0e7-b920-4b3e-b977-c3e0ae5b69c3",
+                  type: "text",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:35:39.000Z",
+                    updatedAt: "2025-02-14T13:35:39.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: {
+                  text: "Texto titulo al lado x3",
+                },
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac57728",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "desktop",
+                    size: {
+                      row: 1,
+                      column: 3,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f498a2",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 0,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:49.000Z",
+                  updatedAt: "2025-02-14T13:38:49.000Z",
                   deletedAt: null,
                 },
               },
@@ -321,9 +483,10 @@ export default function Home({ params }: { params: { userNick: string } }) {
   }
 
   return (
-    <div className="max-h-screen grid grid-cols-12 items-start justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex flex-col min-w-full gap-6 items-center col-span-3 col-start-2 justify-start pt-20 h-full">
+    <div className="max-h-screen relative md:grid grid-cols-12 items-start justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-8 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex flex-col min-w-full gap-6 items-center col-span-3 col-start-2 justify-start md:pt-20 h-full">
         <SideBar mobileMode={false} nickName={params.userNick} />
+        <div className="fixed md:relative bottom-4 md:bottom-0">
         {status != "authenticated" ? (
           <div className="w-full row-start-3 flex gap-6 flex-wrap items-center justify-center">
             <LoginButton textLogin="Create your portfolio"></LoginButton>
@@ -335,6 +498,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
             </Button>
           </div>
         )}
+        </div>
       </div>
       <ProfileView mobileMode={false} profile={actualProfile} />
     </div>

@@ -11,13 +11,13 @@ export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType
   switch (widgetType.type) {
     case WidgetTypeType.TEXT:
       return (
-        <div className="h-full min-h-12 w-full flex flex-col items-center col-span-2 bg-green-600">
+        <div className="h-full min-h-12 w-full flex flex-col items-center">
           {data.text}
         </div>
       );
     case WidgetTypeType.IMAGE:
       return (
-        <div className="h-full min-h-12 w-full flex flex-col items-center col-span-2 bg-green-600">
+        <div className="h-full min-h-12 w-full flex flex-col items-center">
           <img
             src={data.image.url} alt={data.image.alt}
           />
@@ -32,7 +32,7 @@ export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType
 
     default:
       return (
-        <div className="h-full min-h-12 w-full flex flex-col items-center col-span-2 bg-green-600">
+        <div className="h-full min-h-12 w-full flex flex-col items-center bg-green-600">
           {"No element"}
         </div>
       );

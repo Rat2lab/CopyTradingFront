@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import ModalNickname from "@/components/modals/modalNickname";
 import localFont from "next/font/local";
-//import { useEffect } from "react";
 import UserProvider from "./context/userContext";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -22,7 +21,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <Header
         title="All your data here"
         description="Discover daily Product Hunt launches enhanced with AI-generated deck information including problem statements, solutions, TAM, and more."
