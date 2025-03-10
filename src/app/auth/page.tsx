@@ -3,6 +3,7 @@ import React from 'react';
 const AuthPage = () => {
   return (
     <div>
+      <p>Esto es el login </p>
       <iframe
         src={`${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/google`}
         frameBorder="0"
