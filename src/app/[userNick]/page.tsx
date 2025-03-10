@@ -66,7 +66,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
                     widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
                     type: "desktop",
                     size: {
-                      row: 1,
+                      row: 4,
                       column: 3,
                     },
                     timestamp: {
@@ -80,7 +80,7 @@ export default function Home({ params }: { params: { userNick: string } }) {
                     widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
                     type: "mobile",
                     size: {
-                      row: 2,
+                      row: 8,
                       column: 2,
                     },
                     timestamp: {

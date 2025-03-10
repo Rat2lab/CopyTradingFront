@@ -18,8 +18,8 @@ export function ProfileWidget({ widget }: { widget: Widget }) {
     desktopEnv &&
     mobileEnv && (
       <div
-        className={`h-full min-h-12 w-full flex flex-col items-center 
-        border-4 border-double border-green-800`}
+        className={`w-full flex flex-col items-center
+        border-4 border-double border-green-800 max-h-${mobileEnv.size.row} md:max-h-${desktopEnv.size.row} h-${mobileEnv.size.row} md:h-${desktopEnv.size.row}`}
         style={{
           gridColumn: `span ${
             isDesktopOrLaptop ? desktopEnv.size.column : mobileEnv.size.column
