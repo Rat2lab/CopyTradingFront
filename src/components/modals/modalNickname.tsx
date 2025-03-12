@@ -1,7 +1,8 @@
 "use client";
 
+import { useUserContext } from "@/app/hooks/useUser";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import { patchUser } from "@/pages/api/auth/user.api";
 import { useState } from "react";
 import {
   Dialog,
@@ -10,24 +11,31 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { patchUser } from "@/pages/api/auth/user.api";
 
 export default function ModalNickname() {
-  const { data: session, update } = useSession();
-  const [nick, setNick] = useState<string | null>("");
+  // const { data: session, update } = useSession();
+  const { accessToken, setUserLogged, loggedUser } = useUserContext();
+
+  const [nick, setNick] = useState<string | undefined>();
 
   async function handleEditNick() {
-   
-    if (session) {
-      const response = await patchUser(session.user?.id, { nickName: nick });
+    if (accessToken) {
+      const response = await patchUser(accessToken, loggedUser?.id, {
+        nickName: nick,
+      });
       if (!response.ok) {
         // update the session
-        await update({ nickName: nick });
+        setUserLogged({
+          id: loggedUser?.id ? loggedUser.id : "",
+          email: loggedUser?.email ? loggedUser.email : "",
+          nickName: nick,
+        });
       }
     }
   }
+
   return (
-    <Dialog open={(session && !session.user.nickName) ?? false}>
+    <Dialog open={(loggedUser && !loggedUser.nickName) ?? false}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Claim your unique page</DialogTitle>

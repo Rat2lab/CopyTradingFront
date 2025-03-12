@@ -1,28 +1,10 @@
-import NextAuth, { Session, User } from "next-auth";
-import { JWT } from "next-auth/jwt";
-import GoogleProvider from "next-auth/providers/google";
 import { User as MyUser } from "@/interfaces/user.interface";
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import { createUser, sendGoogleAuthRequest } from "./user.api";
 
-async function sendGoogleAuthRequest(data: { email: string; idToken: string }) {
-  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/google`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-}
 
-async function createUser(email: string, accessToken: string) {
-  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/user`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify({ email }),
-  });
-}
+// TODO REMOVE EVERYTHING
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -105,7 +87,7 @@ export const authOptions = {
       if (account.provider === "google") {
         let createdUserData: MyUser = {
           id: "",
-          nickName: null,
+          nickName: undefined,
           email: "",
           timestampable: {
             createdAt: undefined,

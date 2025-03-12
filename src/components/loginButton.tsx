@@ -1,33 +1,56 @@
 "use client";
 
+import { useUserContext } from "@/app/hooks/useUser";
 import { Button } from "@/components/ui/button";
-import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginButton({ textLogin }: { textLogin: string }) {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
+  const { accessToken, setSessionAccessToken, setUserLogged } =
+    useUserContext();
+  const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const googleAuth = () => {
+    setLoading(true);
     window.location.href = `${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/google`;
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get("accessToken");
-    console.log("accessToken", accessToken);
-    // TODO save access token to session storage
-    // TODO redirect to onboarding
-  });
+    // TODO What if login fails
 
-  if (session) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessTokenParam = urlParams.get("accessToken");
+
+    if (accessTokenParam && !accessToken) {
+      setSessionAccessToken(accessTokenParam);
+      // TODO Loading status and call getUser
+      setUserLogged({ id: "123", email: "test@gmail.com" });
+
+      router.push("/onboarding");
+      setLoading(false);
+    }
+  }, [router, accessToken]);
+
+  if (loading) {
+    return (
+      <img
+        src="/favicon1024x1024.ico"
+        alt="Loading..."
+        className="w-8 h-8 animate-spin"
+      />
+    );
+  }
+  if (accessToken) {
     return (
       <div className="flex flex-col gap-2 items-center">
         <Link href="/onboarding">Complete your profile</Link>
         or <br />
         <Button
           className="bg-green-900 text-lg"
-          onClick={() => signOut({ callbackUrl: "/" })}
+          onClick={() => setSessionAccessToken(undefined)}
         >
           Logout
         </Button>

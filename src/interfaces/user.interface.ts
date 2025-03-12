@@ -8,10 +8,10 @@ export interface Timestamp {
 
 export interface User {
   id: string;
-  nickName: string | null;
+  nickName?: string;
   email: string;
   apiExchangeToken?: string;
-  timestampable: {
+  timestampable?: {
     createdAt: Date | undefined;
     updatedAt: Date | undefined;
   };
@@ -29,6 +29,8 @@ export type UserContextType = {
   actualProfile?: Profile;
   setUserLogged: (newUser: User) => void;
   setActualProfile: (newUser: Profile) => void;
+  accessToken: string | undefined;
+  setSessionAccessToken: (token: string | undefined) => void;
 };
 
 export interface Widget {

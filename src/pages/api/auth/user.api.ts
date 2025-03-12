@@ -1,6 +1,6 @@
 // src/api/user.api.ts
 
-export const patchUser = async (userId: string, data: any) => {
+export const patchUser = async (accessToken: string, userId: string | undefined, data: any) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/v1/user/${userId}`,
@@ -8,6 +8,7 @@ export const patchUser = async (userId: string, data: any) => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${accessToken}`,
         },
         body: JSON.stringify(data),
       }
@@ -36,3 +37,27 @@ export const getProfileByNickname = async (nickName: string) => {
     throw new Error("Failed to fetch user Info");
   }
 };
+
+export async function sendGoogleAuthRequest(data: {
+  email: string;
+  idToken: string;
+}) {
+  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/auth/google`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function createUser(email: string, accessToken: string) {
+  return await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/user`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({ email }),
+  });
+}

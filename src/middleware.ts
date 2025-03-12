@@ -1,3 +1,6 @@
-export { default } from "next-auth/middleware"
+export { default } from "next-auth/middleware";
 
-export const config = { matcher: ["/edit/:path*", "/onboarding"] }
+// TODO change to custom middleware without using next-auth
+export const config = {
+   matcher: ["/edit/:path*"]
+};

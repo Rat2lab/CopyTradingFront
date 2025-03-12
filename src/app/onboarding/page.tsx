@@ -2,17 +2,20 @@
 
 import ModalApiToken from "@/components/modals/modalApiToken";
 import ModalNickname from "@/components/modals/modalNickname";
-import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useUserContext } from "../hooks/useUser";
 
 export default function Home({ params }: { params: { userNick: string } }) {
-  const { data: session, status } = useSession();
-  console.log("render onboarding page");
+  //TODO use acesstoken from userContext
+  // const { data: session, status } = useSession();
+  const { accessToken, loggedUser } = useUserContext();
 
-  if (session) {
-    console.log("session", session);
-    if (session.user.nickName && session.user.apiExchangeToken)
-      redirect("/edit/" + session.user.nickName);
+  console.log("render onboarding page, loggedUser", loggedUser);
+
+  if (accessToken) {
+    // console.log("session", session);
+    if (loggedUser?.nickName && loggedUser.apiExchangeToken)
+    redirect("/edit/" + loggedUser.nickName);
   }
 
   return (
