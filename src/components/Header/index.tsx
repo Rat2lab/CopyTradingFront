@@ -1,7 +1,8 @@
+import Head from "next/head";
 import Script from "next/script";
 
 const Header = ({ title, description, keywords }: any) => (
-  <head>
+  <Head>
     {/* <Script
       strategy="afterInteractive"
       src={`https://www.googletagmanager.com/gtag/js?id=G-Y7K152Q76B`}
@@ -38,7 +39,7 @@ const Header = ({ title, description, keywords }: any) => (
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" />
-  </head>
+  </Head>
 );
 
 export default Header;

@@ -11,12 +11,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { getCookie } from "@/lib/utils";
 
 export default function ModalApiToken() {
-    const { accessToken, setUserLogged, loggedUser } = useUserContext();
+    const { setUserLogged, loggedUser } = useUserContext();
   const [apiExchangeToken, setApiExchangeToken] = useState<string | undefined>();
 
   async function handleEditApiToken() {
+    const accessToken = getCookie("accessToken");
     if (accessToken) {
       const response = await patchUser(accessToken, loggedUser?.id, {
         apiExchangeToken: apiExchangeToken,

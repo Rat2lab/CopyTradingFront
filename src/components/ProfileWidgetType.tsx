@@ -1,13 +1,19 @@
 import {
   WidgetData,
   WidgetType,
-  WidgetTypeType
+  WidgetTypeType,
 } from "@/interfaces/user.interface";
 import { MyBarChart } from "./MyBarChart";
 import { MyPieChart } from "./MyPieChart";
 import { MyRadarChart } from "./MyRadarChart";
 
-export function ProfileWidgetType({ widgetType, data }: { widgetType: WidgetType, data: WidgetData }) {
+export function ProfileWidgetType({
+  widgetType,
+  data,
+}: {
+  widgetType: WidgetType;
+  data: WidgetData;
+}) {
   switch (widgetType.type) {
     case WidgetTypeType.TEXT:
       return (

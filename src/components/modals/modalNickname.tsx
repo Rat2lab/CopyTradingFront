@@ -11,14 +11,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import { getCookie } from "@/lib/utils";
 
 export default function ModalNickname() {
   // const { data: session, update } = useSession();
-  const { accessToken, setUserLogged, loggedUser } = useUserContext();
+  const { setUserLogged, loggedUser } = useUserContext();
 
   const [nick, setNick] = useState<string | undefined>();
 
   async function handleEditNick() {
+    const accessToken = getCookie("accessToken");
     if (accessToken) {
       const response = await patchUser(accessToken, loggedUser?.id, {
         nickName: nick,

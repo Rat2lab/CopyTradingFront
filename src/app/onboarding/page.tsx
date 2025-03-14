@@ -4,18 +4,18 @@ import ModalApiToken from "@/components/modals/modalApiToken";
 import ModalNickname from "@/components/modals/modalNickname";
 import { redirect } from "next/navigation";
 import { useUserContext } from "../hooks/useUser";
+import { getCookie } from "@/lib/utils";
 
 export default function Home({ params }: { params: { userNick: string } }) {
   //TODO use acesstoken from userContext
   // const { data: session, status } = useSession();
-  const { accessToken, loggedUser } = useUserContext();
+  const { loggedUser } = useUserContext();
 
   console.log("render onboarding page, loggedUser", loggedUser);
 
-  if (accessToken) {
-    // console.log("session", session);
+  if (getCookie("accessToken")) {
     if (loggedUser?.nickName && loggedUser.apiExchangeToken)
-    redirect("/edit/" + loggedUser.nickName);
+      redirect("/edit/" + loggedUser.nickName);
   }
 
   return (

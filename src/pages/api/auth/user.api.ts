@@ -1,6 +1,30 @@
 // src/api/user.api.ts
 
-export const patchUser = async (accessToken: string, userId: string | undefined, data: any) => {
+export const getUser = async (accessToken: string) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/v1/user`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const patchUser = async (
+  accessToken: string,
+  userId: string | undefined,
+  data: any
+) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/v1/user/${userId}`,
@@ -8,7 +32,7 @@ export const patchUser = async (accessToken: string, userId: string | undefined,
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(data),
       }

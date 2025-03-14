@@ -8,7 +8,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [currentProfile, setCurrentProfile] = useState<Profile | undefined>();
   const [loggedUser, setLoggedUser] = useState<User | undefined>();
-  const [accessToken, setAccessToken] = useState<string | undefined>();
 
   const setUserLogged = (user: User) => {
     setLoggedUser(user);
@@ -16,9 +15,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setActualProfile = (profile: Profile) => {
     setCurrentProfile(profile);
-  };
-  const setSessionAccessToken = (token: string | undefined) => {
-    setAccessToken(token);
   };
 
   return (
@@ -28,8 +24,6 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         loggedUser: loggedUser,
         setActualProfile,
         setUserLogged,
-        accessToken: accessToken,
-        setSessionAccessToken,
       }}
     >
       {children}

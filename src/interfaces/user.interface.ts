@@ -1,4 +1,3 @@
-import { isDynamicMetadataRoute } from "next/dist/build/analysis/get-page-static-info";
 
 export interface Timestamp {
   createdAt: Date;
@@ -29,8 +28,6 @@ export type UserContextType = {
   actualProfile?: Profile;
   setUserLogged: (newUser: User) => void;
   setActualProfile: (newUser: Profile) => void;
-  accessToken: string | undefined;
-  setSessionAccessToken: (token: string | undefined) => void;
 };
 
 export interface Widget {
