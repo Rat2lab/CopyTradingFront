@@ -7,7 +7,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [currentProfile, setCurrentProfile] = useState<Profile | undefined>();
-  const [loggedUser, setLoggedUser] = useState<User | null>(null);
+  const [loggedUser, setLoggedUser] = useState<User | undefined>();
 
   const setUserLogged = (user: User) => {
     setLoggedUser(user);
@@ -21,7 +21,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     <UserContext.Provider
       value={{
         actualProfile: currentProfile,
-        loggedUser: undefined,
+        loggedUser: loggedUser,
         setActualProfile,
         setUserLogged,
       }}

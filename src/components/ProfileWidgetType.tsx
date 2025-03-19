@@ -7,9 +7,6 @@ import { MyBarChart } from "./MyBarChart";
 import { MyPieChart } from "./MyPieChart";
 import { MyRadarChart } from "./MyRadarChart";
 
-// TODO apply bg-img
-//  <div className={`h-full w-full flex flex-col items-center bg-[url("${ data.image.url}")]`}>
-
 export function ProfileWidgetType({
   widgetType,
   data,

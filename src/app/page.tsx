@@ -3,12 +3,13 @@ import Link from "next/link";
 import LoginButton from "@/components/loginButton";
 import { MyPieChart } from "@/components/MyPieChart";
 import { MyRadarChart } from "@/components/MyRadarChart";
-import "./globals.css";
-import {
-  MagnifyingGlassIcon,
-  DoubleArrowDownIcon,
-} from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import {
+  DoubleArrowDownIcon,
+  MagnifyingGlassIcon,
+} from "@radix-ui/react-icons";
+import "./globals.css";
+import Image from "next/image";
 
 const RadarFakeData = [
   {
@@ -32,10 +33,12 @@ const landing = () => {
   return (
     <main className="w-full ">
       <div className="relative w-full h-screen flex flex-col items-center justify-center md:bg-white md:text-black">
-        <img
+        <Image
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
-          className="h-20 md:h-32 mt-4 md:mb-12"
+          width={200}
+          height={200}
+          className="h-20 w-auto md:h-32 mt-4 md:mb-12"
         />
         <div className="flex flex-col md:flex-row items-center justify-around w-full p-8 gap-10">
           <div className="bg-white rounded-2xl pt-2 col-span-3 border-2 border-green-800 -rotate-6 hidden md:block">
@@ -115,7 +118,13 @@ const landing = () => {
         className="md:h-screen flex flex-col-reverse md:flex-row items-center justify-around w-full p-8 md:p-16 gap-10"
       >
         <div className="flex items-center justify-center w-full md:w-1/3">
-          <img src="/exchanges.png" alt="kraken" className="w-full" />
+          <Image
+            width={500}
+            height={500}
+            src="/exchanges.png"
+            alt="kraken"
+            className="w-full"
+          />
         </div>
         <div className="flex flex-col items-center gap-4 text-center">
           <h1 className="text-4xl md:text-6xl text-green-800">
@@ -135,7 +144,9 @@ const landing = () => {
           Set up your portfolio and show what you really want
         </h1>
         <div className="flex items-center justify-center w-full md:w-1/3">
-          <img
+          <Image
+            height={500}
+            width={500}
             src="/portfolio-sample.png"
             alt="chart"
             className="h-132 border-2 border-green-800 rounded-2xl"

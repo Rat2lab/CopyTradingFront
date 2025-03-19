@@ -1,7 +1,8 @@
 "use client";
 
+import { useUserContext } from "@/app/hooks/useUser";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import { patchUser } from "@/pages/api/auth/user.api";
 import { useState } from "react";
 import {
   Dialog,
@@ -10,27 +11,32 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { patchUser } from "@/pages/api/auth/user.api";
+import { getCookie } from "@/lib/utils";
 
 export default function ModalApiToken() {
-  const { data: session, update } = useSession();
-  const [apiExchangeToken, setApiExchangeToken] = useState<string | null>("");
+    const { setUserLogged, loggedUser } = useUserContext();
+  const [apiExchangeToken, setApiExchangeToken] = useState<string | undefined>();
 
   async function handleEditApiToken() {
-    if (session) {
-      const response = await patchUser(session.user?.id, {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      const response = await patchUser(accessToken, loggedUser?.id, {
         apiExchangeToken: apiExchangeToken,
       });
       if (!response.ok) {
         // update the session
-        await update({ apiExchangeToken: apiExchangeToken });
+        setUserLogged({
+          id: loggedUser?.id ? loggedUser.id : "",
+          email: loggedUser?.email ? loggedUser.email : "",
+          apiExchangeToken: apiExchangeToken
+        });
       }
     }
   }
   return (
     <Dialog
       open={
-        !!(session && session.user.nickName && !session.user.apiExchangeToken)
+        !!(loggedUser && loggedUser.nickName && !loggedUser.apiExchangeToken)
       }
     >
       <DialogContent className="sm:max-w-md">

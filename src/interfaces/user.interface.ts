@@ -1,4 +1,3 @@
-import { isDynamicMetadataRoute } from "next/dist/build/analysis/get-page-static-info";
 
 export interface Timestamp {
   createdAt: Date;
@@ -8,10 +7,10 @@ export interface Timestamp {
 
 export interface User {
   id: string;
-  nickName: string | null;
+  nickName?: string;
   email: string;
   apiExchangeToken?: string;
-  timestampable: {
+  timestampable?: {
     createdAt: Date | undefined;
     updatedAt: Date | undefined;
   };
