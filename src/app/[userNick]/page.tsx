@@ -19,8 +19,6 @@ export default function Home({ params }: { params: { userNick: string } }) {
   const [error, setError] = useState<string | null>(null);
   const { setActualProfile, actualProfile } = useUserContext();
 
-  //TODO infinite loop
-
   // Initialize user info
   useEffect(() => {
     // const checkProfileEditable = () => {

@@ -23,29 +23,28 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
   useEffect(() => {
     if (typeof window === "undefined") return; // Evitar ejecución en SSR
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessTokenParam = urlParams.get("accessToken");
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const accessTokenParam = urlParams.get("accessToken");
 
-    if (!accessTokenParam) return;
+    const accessTokenInCookie = getCookie("accessToken");
 
-    if (accessTokenParam) {
+    if (!accessTokenInCookie) return;
+
+    if (accessTokenInCookie) {
       //TODO REMOVE
-      console.log("setting cookie with value: ", accessTokenParam);
+      // console.log("setting cookie with value: ", accessTokenParam);
       //Faking setting cookie
-      document.cookie = `accessToken=${accessTokenParam}; Secure; Path=/`;
+      // document.cookie = `accessToken=${accessTokenParam}; Secure; Path=/`;
 
-      const accessTokenInCookie = getCookie("accessToken");
-      if (accessTokenInCookie) {
-        console.log("accessTpoken in cookie", accessTokenInCookie);
-        getUser(accessTokenInCookie)
-          .then((user) => {
-            setUserLogged(user);
-          })
-          .catch((error) => {
-            //SET user fake
-            setUserLogged({ id: "123", email: "test@gmail.com" });
-          });
-      }
+      console.log("accessTpoken in cookie", accessTokenInCookie);
+      getUser(accessTokenInCookie)
+        .then((user) => {
+          setUserLogged(user);
+        })
+        .catch((error) => {
+          //SET user fake
+          setUserLogged({ id: "123", email: "test@gmail.com" });
+        });
 
       router.push("/onboarding");
     }
@@ -87,7 +86,12 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
         className="bg-white text-green-900 text-lg gap-1 border-2 border-green-800"
         onClick={() => googleAuth()}
       >
-        <Image src="/google.png" height={24} width={24} alt="Google_login"></Image>
+        <Image
+          src="/google.png"
+          height={24}
+          width={24}
+          alt="Google_login"
+        ></Image>
         {textLogin}
       </Button>
     </div>

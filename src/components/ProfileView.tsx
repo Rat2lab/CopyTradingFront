@@ -1,7 +1,14 @@
 import { Profile } from "@/interfaces/user.interface";
-import { useSession } from "next-auth/react";
 import { ProfileWidget } from "./ProfileWidget";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useUserContext } from "@/app/hooks/useUser";
+
+import RGL, { WidthProvider } from "react-grid-layout";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+import { useMediaQuery } from "react-responsive";
+
+const ReactGridLayout = WidthProvider(RGL);
 
 export function ProfileView({
   mobileMode,
@@ -10,7 +17,10 @@ export function ProfileView({
   mobileMode: boolean;
   profile?: Profile;
 }) {
-  const { data: session, status } = useSession();
+  const { setUserLogged, loggedUser } = useUserContext();
+
+  // TODO Check if profile is editable or send as param?
+  // If logged user is profile owner, show "edit profile" button
 
   return (
     <main
@@ -26,18 +36,60 @@ export function ProfileView({
             <AvatarImage src="https://github.com/shadcn.png" alt={"avatar"} />
             <AvatarFallback>user</AvatarFallback>
           </Avatar>
-          <h1 className="text-3xl font-bold">/{session?.user?.nickName}</h1>
+          <h1 className="text-3xl font-bold">/{loggedUser?.nickName}</h1>
         </div>
       )}
+
       <div className={`w-full flex flex-col gap-6 items-center `}>
         <h2 className="text-3xl">My profile</h2>
-        <div
-          className={`w-full grid grid-cols-4 gap-6 items-center `}
+        {/* <div className={`w-full grid grid-cols-4 gap-6 items-center `}> */}
+
+        <ReactGridLayout
+          className="layout bg-white w-full"
+          width={1000}
+          cols={4}
+          draggableHandle=".react-grid-dragHandleExample"
+          autoSize
+          compactType={"vertical"}
         >
-          {profile?.widgets.map((widget) => {
-            return <ProfileWidget widget={widget} key={widget.id} />;
+          {profile?.widgets.map((widget, index) => {
+            const desktopEnv = widget.environments.find(
+              (env) => env.type === "desktop"
+            );
+            const mobileEnv = widget.environments.find(
+              (env) => env.type === "mobile"
+            );
+            const isDesktopOrLaptop = useMediaQuery({
+              query: "(min-width: 768px)",
+            });
+            const dataGrid = {
+              x: 0,
+              // TODO define X and Y of every element
+              y: 0,
+              w: isDesktopOrLaptop
+                ? desktopEnv
+                  ? desktopEnv.size.column
+                  : 0
+                : mobileEnv
+                ? mobileEnv.size.column
+                : 0,
+              h: isDesktopOrLaptop
+                ? desktopEnv
+                  ? desktopEnv.size.row
+                  : 0
+                : mobileEnv
+                ? mobileEnv.size.row
+                : 0,
+            };
+            return (
+              <div key={widget.id} data-grid={dataGrid}>
+                <ProfileWidget widget={widget} key={widget.id} index={index} />
+              </div>
+            );
           })}
-        </div>
+        </ReactGridLayout>
+
+        {/* </div> */}
       </div>
     </main>
   );

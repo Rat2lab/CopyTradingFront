@@ -1,5 +1,5 @@
 import React from "react";
-   
+
 const explore = () => {
   return (
     <main className="w-full h-screen flex flex-col gap-0 md:gap-8 md:flex-row md:justify-between columns-2 overflow-hidden text-white bg-gradient-to-b from-gradient-start  via-gradient-middle to-gradient-end">
