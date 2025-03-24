@@ -37,14 +37,14 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
       // document.cookie = `accessToken=${accessTokenParam}; Secure; Path=/`;
 
       console.log("accessTpoken in cookie", accessTokenInCookie);
-      getUser(accessTokenInCookie)
+      /*getUser(accessTokenInCookie)
         .then((user) => {
           setUserLogged(user);
         })
         .catch((error) => {
           //SET user fake
           setUserLogged({ id: "123", email: "test@gmail.com" });
-        });
+        });*/
 
       router.push("/onboarding");
     }
