@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import ModalNickname from "@/components/modals/modalNickname";
 import localFont from "next/font/local";
-import UserProvider from "./context/userContext";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -16,7 +15,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -30,12 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-h-screen`}
       >
-        <Providers>
-          <UserProvider>
-            <ModalNickname />
-            {children}
-          </UserProvider>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
