@@ -1,5 +1,4 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { ShareButton } from "./shareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -12,7 +11,6 @@ export function SideBar({
   mobileMode: boolean;
   nickName: string;
 }) {
-  const { data: session, status } = useSession();
 
   return (
     <>

@@ -36,6 +36,7 @@ const landing = () => {
         <Image
           src="/favicon1024x1024.ico"
           alt="CryptoFolio.me"
+          priority
           width={200}
           height={200}
           className="h-20 w-auto md:h-32 mt-4 md:mb-12"

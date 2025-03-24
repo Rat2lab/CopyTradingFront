@@ -57,6 +57,7 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
         alt="Loading..."
         width={32}
         height={32}
+        priority
         className="animate-spin"
       />
     );

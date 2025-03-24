@@ -65,7 +65,6 @@ export function ProfileView({
            
             const dataGrid = {
               x: 0,
-              // TODO define X and Y of every element
               y: 0,
               w: isDesktopOrLaptop
                 ? desktopEnv
@@ -76,7 +75,7 @@ export function ProfileView({
                 : 0,
               h: isDesktopOrLaptop
                 ? desktopEnv
-                  ? desktopEnv.size.row
+                  ? desktopEnv.size.row 
                   : 0
                 : mobileEnv
                 ? mobileEnv.size.row
@@ -84,7 +83,7 @@ export function ProfileView({
             };
             return (
               <div key={widget.id} data-grid={dataGrid}>
-                <ProfileWidget widget={widget} key={widget.id} index={index} />
+                <ProfileWidget widget={widget} key={widget.id} />
               </div>
             );
           })}

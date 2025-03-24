@@ -27,7 +27,7 @@ export function ProfileWidgetType({
       return (
         data?.image?.url && (
           <div className={`h-full w-full flex flex-col items-center`}>
-            <img src={data.image.url} alt={data.image.alt} />
+            <img src={data.image.url} alt={data.image.alt} style={{ height: "inherit" }}/>
           </div>
         )
       );

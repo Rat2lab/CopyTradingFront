@@ -7,6 +7,7 @@ export function Loading() {
       <Image
         src="/favicon1024x1024.ico"
         alt="Loading..."
+        priority
         width={96}
         height={96}
         className="animate-spin"
