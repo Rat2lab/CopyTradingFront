@@ -18,6 +18,9 @@ export function ProfileView({
   profile?: Profile;
 }) {
   const { setUserLogged, loggedUser } = useUserContext();
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 768px)",
+  });
 
   // TODO Check if profile is editable or send as param?
   // If logged user is profile owner, show "edit profile" button
@@ -59,9 +62,7 @@ export function ProfileView({
             const mobileEnv = widget.environments.find(
               (env) => env.type === "mobile"
             );
-            const isDesktopOrLaptop = useMediaQuery({
-              query: "(min-width: 768px)",
-            });
+           
             const dataGrid = {
               x: 0,
               // TODO define X and Y of every element

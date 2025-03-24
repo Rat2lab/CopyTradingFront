@@ -31,9 +31,7 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
     if (!accessTokenInCookie) return;
 
     if (accessTokenInCookie) {
-      //TODO REMOVE
-      // console.log("setting cookie with value: ", accessTokenParam);
-      //Faking setting cookie
+      //TODO REMOVE -- Faking setting cookie
       // document.cookie = `accessToken=${accessTokenParam}; Secure; Path=/`;
 
       console.log("accessTpoken in cookie", accessTokenInCookie);
@@ -46,7 +44,7 @@ export default function LoginButton({ textLogin }: { textLogin: string }) {
           setUserLogged({ id: "123", email: "test@gmail.com" });
         });*/
 
-      router.push("/onboarding");
+      // router.push("/onboarding");
     }
 
     setLoading(false);
