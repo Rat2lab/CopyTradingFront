@@ -6,6 +6,7 @@ import {
 import { MyBarChart } from "./MyBarChart";
 import { MyPieChart } from "./MyPieChart";
 import { MyRadarChart } from "./MyRadarChart";
+import { Textfit } from 'react-textfit';
 
 export function ProfileWidgetType({
   widgetType,
@@ -19,7 +20,10 @@ export function ProfileWidgetType({
       return (
         data?.text && (
           <div className="h-full w-full flex flex-col items-center">
-            {data.text}
+            {/* TODO text fit not fitea  */}
+            <Textfit mode="single" forceSingleModeWidth={false}>
+              {data.text}
+              </Textfit> 
           </div>
         )
       );

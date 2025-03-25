@@ -205,79 +205,58 @@ export default function Home({ params }: { params: { userNickname: string } }) {
                 },
               },
               {
-                id: "d90f1908-dbc1-4d8a-8554-c89a25f93f48",
+                id: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
                 type: {
-                  id: "83b03a2b-a7c1-4b6d-9d5c-1db5efaa9576",
-                  type: "video",
+                  id: "eab7a0e7-b920-4b3e-b977-c3e0ae5b69c3",
+                  type: "text",
                   defaultData: {},
                   timestamp: {
-                    createdAt: "2025-02-14T13:36:13.000Z",
-                    updatedAt: "2025-02-14T13:36:13.000Z",
+                    createdAt: "2025-02-14T13:35:39.000Z",
+                    updatedAt: "2025-02-14T13:35:39.000Z",
                     deletedAt: null,
                   },
                 },
                 profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-                environments: [],
-                position: 7,
+                data: {
+                  text: "Texto título x1",
+                },
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac57128",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "desktop",
+                    size: {
+                      row: 1,
+                      column: 1,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f498a2",
+                    widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 0,
                 timestamp: {
-                  createdAt: "2025-02-14T13:38:53.000Z",
-                  updatedAt: "2025-02-14T13:38:53.000Z",
+                  createdAt: "2025-02-14T13:38:49.000Z",
+                  updatedAt: "2025-02-14T13:38:49.000Z",
                   deletedAt: null,
                 },
               },
-              // {
-              //   id: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
-              //   type: {
-              //     id: "eab7a0e7-b920-4b3e-b977-c3e0ae5b69c3",
-              //     type: "text",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:35:39.000Z",
-              //       updatedAt: "2025-02-14T13:35:39.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   data: {
-              //     text: "Texto título x1",
-              //   },
-              //   environments: [
-              //     {
-              //       id: "e215648f-f4e2-4133-a37a-8c502ac57128",
-              //       widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
-              //       type: "desktop",
-              //       size: {
-              //         row: 1,
-              //         column: 1,
-              //       },
-              //       timestamp: {
-              //         createdAt: "2025-02-28T09:27:55.000Z",
-              //         updatedAt: "2025-02-28T09:27:55.000Z",
-              //         deletedAt: null,
-              //       },
-              //     },
-              //     {
-              //       id: "040924f0-1c14-4d50-ab63-e85897f498a2",
-              //       widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
-              //       type: "mobile",
-              //       size: {
-              //         row: 2,
-              //         column: 2,
-              //       },
-              //       timestamp: {
-              //         createdAt: "2025-02-28T09:27:58.000Z",
-              //         updatedAt: "2025-02-28T09:27:58.000Z",
-              //         deletedAt: null,
-              //       },
-              //     },
-              //   ],
-              //   position: 0,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:49.000Z",
-              //     updatedAt: "2025-02-14T13:38:49.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
               // {
               //   id: "ebb49a8e-3667-4d9f-a952-67a7ad032691",
               //   type: {
@@ -527,7 +506,7 @@ export default function Home({ params }: { params: { userNickname: string } }) {
         </div>
       </div>
       {/* TODO actual profile is always userContext? send as param?  */}
-      <ProfileView mobileMode={mobileMode} profile={actualProfile} />
+      <ProfileView mobileMode={mobileMode} profile={actualProfile} editable />
     </div>
   );
 }

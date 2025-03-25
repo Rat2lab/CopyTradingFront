@@ -1,5 +1,4 @@
 import { Profile } from "@/interfaces/user.interface";
-import { ProfileWidget } from "./ProfileWidget";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useUserContext } from "@/app/hooks/useUser";
 
@@ -7,23 +6,25 @@ import RGL, { WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { useMediaQuery } from "react-responsive";
+import { MoveIcon } from "@radix-ui/react-icons";
+import { ProfileWidgetType } from "./ProfileWidgetType";
+import { Textfit } from "react-textfit";
 
 const ReactGridLayout = WidthProvider(RGL);
 
 export function ProfileView({
   mobileMode,
   profile,
+  editable,
 }: {
   mobileMode: boolean;
   profile?: Profile;
+  editable?: boolean;
 }) {
   const { setUserLogged, loggedUser } = useUserContext();
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 768px)",
   });
-
-  // TODO Check if profile is editable or send as param?
-  // If logged user is profile owner, show "edit profile" button
 
   return (
     <main
@@ -45,12 +46,13 @@ export function ProfileView({
 
       <div className={`w-full flex flex-col gap-6 items-center `}>
         <h2 className="text-3xl">My profile</h2>
-        {/* <div className={`w-full grid grid-cols-4 gap-6 items-center `}> */}
 
         <ReactGridLayout
           className="layout bg-white w-full"
           width={1000}
           cols={4}
+          isDraggable={editable}
+          isResizable={editable}
           draggableHandle=".react-grid-dragHandleExample"
           autoSize
           compactType={"vertical"}
@@ -62,7 +64,7 @@ export function ProfileView({
             const mobileEnv = widget.environments.find(
               (env) => env.type === "mobile"
             );
-           
+
             const dataGrid = {
               x: 0,
               y: 0,
@@ -75,21 +77,31 @@ export function ProfileView({
                 : 0,
               h: isDesktopOrLaptop
                 ? desktopEnv
-                  ? desktopEnv.size.row 
+                  ? desktopEnv.size.row
                   : 0
                 : mobileEnv
                 ? mobileEnv.size.row
                 : 0,
             };
             return (
-              <div key={widget.id} data-grid={dataGrid}>
-                <ProfileWidget widget={widget} key={widget.id} />
+              <div
+                key={widget.id}
+                data-grid={dataGrid}
+                className="w-full flex flex-col items-center
+        border-2 rounded-md border-grey-800 h-full relative p-4"
+              >
+                {editable && (
+                  <MoveIcon className="react-grid-dragHandleExample absolute top-2 right-2" />
+                )}
+                <ProfileWidgetType
+                  key={widget.id}
+                  widgetType={widget.type}
+                  data={widget.data}
+                />
               </div>
             );
           })}
         </ReactGridLayout>
-
-        {/* </div> */}
       </div>
     </main>
   );
