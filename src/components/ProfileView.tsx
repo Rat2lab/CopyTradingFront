@@ -56,6 +56,8 @@ export function ProfileView({
           draggableHandle=".react-grid-dragHandleExample"
           autoSize
           compactType={"vertical"}
+          // TODO compact vertical AND horizontal is posible? https://github.com/react-grid-layout/react-grid-layout/issues/1100#issuecomment-583741129 
+          // use x y w h ?
         >
           {profile?.widgets.map((widget, index) => {
             const desktopEnv = widget.environments.find(

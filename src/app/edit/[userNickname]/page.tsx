@@ -257,143 +257,196 @@ export default function Home({ params }: { params: { userNickname: string } }) {
                   deletedAt: null,
                 },
               },
-              // {
-              //   id: "ebb49a8e-3667-4d9f-a952-67a7ad032691",
-              //   type: {
-              //     id: "eab7a0e7-b920-4b3e-b977-c3e0ae5b69c3",
-              //     type: "text",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:35:39.000Z",
-              //       updatedAt: "2025-02-14T13:35:39.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   data: {
-              //     text: "Texto titulo al lado x3",
-              //   },
-              //   environments: [
-              //     {
-              //       id: "e215648f-f4e2-4133-a37a-8c502ac57728",
-              //       widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
-              //       type: "desktop",
-              //       size: {
-              //         row: 1,
-              //         column: 3,
-              //       },
-              //       timestamp: {
-              //         createdAt: "2025-02-28T09:27:55.000Z",
-              //         updatedAt: "2025-02-28T09:27:55.000Z",
-              //         deletedAt: null,
-              //       },
-              //     },
-              //     {
-              //       id: "040924f0-1c14-4d50-ab63-e85897f498a2",
-              //       widgetId: "ebb49a8e-3667-4d9f-a952-67a7ad032698",
-              //       type: "mobile",
-              //       size: {
-              //         row: 2,
-              //         column: 2,
-              //       },
-              //       timestamp: {
-              //         createdAt: "2025-02-28T09:27:58.000Z",
-              //         updatedAt: "2025-02-28T09:27:58.000Z",
-              //         deletedAt: null,
-              //       },
-              //     },
-              //   ],
-              //   position: 0,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:49.000Z",
-              //     updatedAt: "2025-02-14T13:38:49.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
-              // {
-              //   id: "2c98c99e-e4b7-4bed-a9d1-7d0e9cab6478",
-              //   type: {
-              //     id: "6a90ba25-e2b8-48ef-8c0b-17621a61b4f8",
-              //     type: "bar_chart",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:36:11.000Z",
-              //       updatedAt: "2025-02-14T13:36:11.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   environments: [],
-              //   position: 2,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:51.000Z",
-              //     updatedAt: "2025-02-14T13:38:51.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
-              // {
-              //   id: "65971cad-5734-4d6d-aa31-330bb9f48019",
-              //   type: {
-              //     id: "59297ae9-0c0c-40c4-9a5d-8ef111334353",
-              //     type: "link",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:36:10.000Z",
-              //       updatedAt: "2025-02-14T13:36:10.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   environments: [],
-              //   position: 1,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:50.000Z",
-              //     updatedAt: "2025-02-14T13:38:50.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
-              // {
-              //   id: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
-              //   type: {
-              //     id: "261f8e06-06aa-494b-b945-dbc76bb677b2",
-              //     type: "pie_chart",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:36:12.000Z",
-              //       updatedAt: "2025-02-14T13:36:12.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   environments: [],
-              //   position: 4,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:52.000Z",
-              //     updatedAt: "2025-02-14T13:38:52.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
-              // {
-              //   id: "989cea5e-1efb-4b37-bdd6-bb6f3d4adc78",
-              //   type: {
-              //     id: "cea3de62-1101-4567-923e-38446c0a0b1a",
-              //     type: "radar_chart",
-              //     defaultData: {},
-              //     timestamp: {
-              //       createdAt: "2025-02-14T13:36:12.000Z",
-              //       updatedAt: "2025-02-14T13:36:12.000Z",
-              //       deletedAt: null,
-              //     },
-              //   },
-              //   profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
-              //   environments: [],
-              //   position: 5,
-              //   timestamp: {
-              //     createdAt: "2025-02-14T13:38:52.000Z",
-              //     updatedAt: "2025-02-14T13:38:52.000Z",
-              //     deletedAt: null,
-              //   },
-              // },
+              {
+                id: "2c98c99e-e4b7-4bed-a9d1-7d0e9cab6478",
+                type: {
+                  id: "6a90ba25-e2b8-48ef-8c0b-17621a61b4f8",
+                  type: "bar_chart",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:36:11.000Z",
+                    updatedAt: "2025-02-14T13:36:11.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: [
+                  { month: "January", desktop: 186, mobile: 80 },
+                  { month: "February", desktop: 305, mobile: 200 },
+                  { month: "March", desktop: 237, mobile: 120 },
+                  { month: "April", desktop: 73, mobile: 190 },
+                  { month: "May", desktop: 209, mobile: 130 },
+                  { month: "June", desktop: 214, mobile: 140 },
+                  { month: "July", desktop: 184, mobile: 140 },
+                  { month: "August", desktop: 305, mobile: 200 },
+                  { month: "September", desktop: 335, mobile: 80 },
+                  { month: "October", desktop: 114, mobile: 50 },
+                ],
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac55128",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "desktop",
+                    size: {
+                      row: 2,
+                      column: 4,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f49872",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 2,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:51.000Z",
+                  updatedAt: "2025-02-14T13:38:51.000Z",
+                  deletedAt: null,
+                },
+              },
+              {
+                id: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                type: {
+                  id: "261f8e06-06aa-494b-b945-dbc76bb677b2",
+                  type: "pie_chart",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:36:12.000Z",
+                    updatedAt: "2025-02-14T13:36:12.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: [
+                  { name: "Bitcoin", value: 50 },
+                  { name: "Etherum", value: 20 },
+                  { name: "XRP", value: 20 },
+                  { name: "Dogecoin", value: 10 }
+                ],
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac55128",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "desktop",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f49872",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 4,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:52.000Z",
+                  updatedAt: "2025-02-14T13:38:52.000Z",
+                  deletedAt: null,
+                },
+              },
+              {
+                id: "989cea5e-1efb-4b37-bdd6-bb6f3d4adc78",
+                type: {
+                  id: "cea3de62-1101-4567-923e-38446c0a0b1a",
+                  type: "radar_chart",
+                  defaultData: {},
+                  timestamp: {
+                    createdAt: "2025-02-14T13:36:12.000Z",
+                    updatedAt: "2025-02-14T13:36:12.000Z",
+                    deletedAt: null,
+                  },
+                },
+                profileId: "918e48bc-442f-4d54-af89-65fa2da51390",
+                data: [
+                  {
+                    subject: "Bitcoin",
+                    A: 100,
+                    fullMark: 100,
+                  },
+                  {
+                    subject: "Solana",
+                    A: 90,
+                    fullMark: 100,
+                  },
+                  {
+                    subject: "Polkadot",
+                    A: 84,
+                    fullMark: 100,
+                  },
+                  {
+                    subject: "Bit2Me",
+                    A: 87,
+                    fullMark: 100,
+                  },
+                ],
+                environments: [
+                  {
+                    id: "e215648f-f4e2-4133-a37a-8c502ac55128",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "desktop",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:55.000Z",
+                      updatedAt: "2025-02-28T09:27:55.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                  {
+                    id: "040924f0-1c14-4d50-ab63-e85897f49872",
+                    widgetId: "a9ba15be-7e4c-43fd-a817-57f737dfd8fa",
+                    type: "mobile",
+                    size: {
+                      row: 2,
+                      column: 2,
+                    },
+                    timestamp: {
+                      createdAt: "2025-02-28T09:27:58.000Z",
+                      updatedAt: "2025-02-28T09:27:58.000Z",
+                      deletedAt: null,
+                    },
+                  },
+                ],
+                position: 5,
+                timestamp: {
+                  createdAt: "2025-02-14T13:38:52.000Z",
+                  updatedAt: "2025-02-14T13:38:52.000Z",
+                  deletedAt: null,
+                },
+              },
               // {
               //   id: "037fbb31-c9eb-4111-a4b7-ed1eede01e3d",
               //   type: {
